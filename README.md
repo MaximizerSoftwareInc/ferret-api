@@ -5,7 +5,7 @@ It provides a great way to experiment with and learn about the FerretAPI without
 
 To help you get started with the FerretAPI, this repository contains a series of Postman collections that provide example requests for the [FerretAPI](https://rest-api.maximizer.com).
 
-If you aren't already using Postman, [you can download it here](https://www.getpostman.com/postman). Before getting started with the Maximizer.Web.Data collection, take a moment to browse the [introductory Postman documentation](https://www.getpostman.com/docs/v6/), especially the instructions for [how to send your first request](https://www.getpostman.com/docs/v6/postman/launching_postman/sending_the_first_request) and [how to use collections](https://www.getpostman.com/docs/v6/postman/collections/intro_to_collections).
+If you aren't already using Postman, [you can download it here](https://www.getpostman.com/postman). Before getting started with the FerretAPI collection, take a moment to browse the [introductory Postman documentation](https://www.getpostman.com/docs/v6/), especially the instructions for [how to send your first request](https://www.getpostman.com/docs/v6/postman/launching_postman/sending_the_first_request) and [how to use collections](https://www.getpostman.com/docs/v6/postman/collections/intro_to_collections).
 
 ## Getting Started
 
@@ -15,7 +15,7 @@ Once you have Postman installed on your machine, [click here](https://github.com
 
 ### Create an Environment
 
-In order to use the collections, you will need to [create an Environment in Postman](https://www.getpostman.com/docs/postman/environments_and_globals/manage_environments) to store your Maximizer.Web.Data API URL and credentials.
+In order to use the collections, you will need to [create an Environment in Postman](https://www.getpostman.com/docs/postman/environments_and_globals/manage_environments) to store your FerretAPI URL and credentials.
 
 To set up your Postman environment:
 1. In the Postman toolbar, click **Import**.
