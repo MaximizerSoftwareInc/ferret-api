@@ -19,7 +19,7 @@ In order to use the collections, you will need to [create an Environment in Post
 
 To set up your Postman environment:
 1. In the Postman toolbar, click **Import**.
-2. Browse to and select the starter environment in the `Environments` folder that you downloaded above.
+2. Browse to and select the starter environment in the `environments` folder that you downloaded above.
 3. Click the "Manage Environments" button (the gear icon in the upper-right corner of the Postman window).
 4. Click the name of the "FerretAPI" environment that you imported.
 5. Update the values of each of the environment variables in the list and save your changes. Each of the environment variables and their expected values are described below.
@@ -28,7 +28,7 @@ Now you're ready to import a collection and start making requests.
 
 ### Import a Collection and Make Your First Request
 
-The collections can be found in the `Collections` directory, and are organized by entity type or by related functionality. 
+The collections can be found in the `collections` directory, and are organized by entity type or by related functionality. 
 
 To [import a collection into Postman](https://www.getpostman.com/docs/postman/collections/data_formats):
 1. In the Postman toolbar, click **Import**.
