@@ -4,7 +4,7 @@
     "title": "FerretV2 API",
     "version": "v2"
   },
-"servers": [{"url": "https://api-qa.maximizer.com/ferret/v3"}],
+"servers": [{"url": "https://api-qa.maximizer.com/ferret/v2"}],
   "paths": {
     "/abentries/{abentryKey}": {
       "get": {
