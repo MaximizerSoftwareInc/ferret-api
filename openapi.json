@@ -4,8 +4,9 @@
     "title": "FerretV2 API",
     "version": "v2"
   },
+"servers": [{"url": "https://api-qa.maximizer.com/ferret/v2"}],
   "paths": {
-    "/api/v2/abentries/{abentryKey}": {
+    "/abentries/{abentryKey}": {
       "get": {
         "tags": [
           "AbEntries"
@@ -83,7 +84,7 @@
         ]
       }
     },
-    "/api/v2/abentries/metadata": {
+    "/abentries/metadata": {
       "get": {
         "tags": [
           "AbEntries"
@@ -142,7 +143,7 @@
         ]
       }
     },
-    "/api/v2/abentries": {
+    "/abentries": {
       "get": {
         "tags": [
           "AbEntries"
@@ -248,7 +249,7 @@
         ]
       }
     },
-    "/api/v2/abentries/search": {
+    "/abentries/search": {
       "post": {
         "tags": [
           "AbEntries"
@@ -347,7 +348,7 @@
         ]
       }
     },
-    "/api/v2/addresses/{addressKey}": {
+    "/addresses/{addressKey}": {
       "get": {
         "tags": [
           "Addresses"
@@ -425,7 +426,7 @@
         ]
       }
     },
-    "/api/v2/addresses/metadata": {
+    "/addresses/metadata": {
       "get": {
         "tags": [
           "Addresses"
@@ -484,7 +485,7 @@
         ]
       }
     },
-    "/api/v2/addresses": {
+    "/addresses": {
       "get": {
         "tags": [
           "Addresses"
@@ -590,7 +591,7 @@
         ]
       }
     },
-    "/api/v2/addresses/search": {
+    "/addresses/search": {
       "post": {
         "tags": [
           "Addresses"
@@ -689,7 +690,7 @@
         ]
       }
     },
-    "/api/v2/appointments/{appointmentKey}": {
+    "/appointments/{appointmentKey}": {
       "get": {
         "tags": [
           "Appointments"
@@ -767,7 +768,7 @@
         ]
       }
     },
-    "/api/v2/appointments/metadata": {
+    "/appointments/metadata": {
       "get": {
         "tags": [
           "Appointments"
@@ -826,7 +827,7 @@
         ]
       }
     },
-    "/api/v2/appointments": {
+    "/appointments": {
       "get": {
         "tags": [
           "Appointments"
@@ -932,7 +933,7 @@
         ]
       }
     },
-    "/api/v2/appointments/search": {
+    "/appointments/search": {
       "post": {
         "tags": [
           "Appointments"
@@ -1031,7 +1032,7 @@
         ]
       }
     },
-    "/api/v2/cases/{caseKey}": {
+    "/cases/{caseKey}": {
       "get": {
         "tags": [
           "Cases"
@@ -1109,7 +1110,7 @@
         ]
       }
     },
-    "/api/v2/cases/metadata": {
+    "/cases/metadata": {
       "get": {
         "tags": [
           "Cases"
@@ -1168,7 +1169,7 @@
         ]
       }
     },
-    "/api/v2/cases": {
+    "/cases": {
       "get": {
         "tags": [
           "Cases"
@@ -1274,7 +1275,7 @@
         ]
       }
     },
-    "/api/v2/cases/search": {
+    "/cases/search": {
       "post": {
         "tags": [
           "Cases"
@@ -1373,7 +1374,7 @@
         ]
       }
     },
-    "/api/v2/currencyrates/{currencyrateKey}": {
+    "/currencyrates/{currencyrateKey}": {
       "get": {
         "tags": [
           "CurrencyRates"
@@ -1451,7 +1452,7 @@
         ]
       }
     },
-    "/api/v2/currencyrates/metadata": {
+    "/currencyrates/metadata": {
       "get": {
         "tags": [
           "CurrencyRates"
@@ -1510,7 +1511,7 @@
         ]
       }
     },
-    "/api/v2/currencyrates": {
+    "/currencyrates": {
       "get": {
         "tags": [
           "CurrencyRates"
@@ -1616,7 +1617,7 @@
         ]
       }
     },
-    "/api/v2/currencyrates/search": {
+    "/currencyrates/search": {
       "post": {
         "tags": [
           "CurrencyRates"
@@ -1715,7 +1716,7 @@
         ]
       }
     },
-    "/api/v2/leads/{leadKey}": {
+    "/leads/{leadKey}": {
       "get": {
         "tags": [
           "Leads"
@@ -1793,7 +1794,7 @@
         ]
       }
     },
-    "/api/v2/leads/metadata": {
+    "/leads/metadata": {
       "get": {
         "tags": [
           "Leads"
@@ -1852,7 +1853,7 @@
         ]
       }
     },
-    "/api/v2/leads": {
+    "/leads": {
       "get": {
         "tags": [
           "Leads"
@@ -1958,7 +1959,7 @@
         ]
       }
     },
-    "/api/v2/leads/search": {
+    "/leads/search": {
       "post": {
         "tags": [
           "Leads"
@@ -2057,7 +2058,7 @@
         ]
       }
     },
-    "/api/v2/opportunities/{opportunityKey}/follow": {
+    "/opportunities/{opportunityKey}/follow": {
       "post": {
         "tags": [
           "Opportunities"
@@ -2116,7 +2117,7 @@
         ]
       }
     },
-    "/api/v2/opportunities": {
+    "/opportunities": {
       "get": {
         "tags": [
           "Opportunities"
@@ -2222,7 +2223,7 @@
         ]
       }
     },
-    "/api/v2/opportunities/{opportunityKey}": {
+    "/opportunities/{opportunityKey}": {
       "get": {
         "tags": [
           "Opportunities"
@@ -2300,7 +2301,7 @@
         ]
       }
     },
-    "/api/v2/opportunities/metadata": {
+    "/opportunities/metadata": {
       "get": {
         "tags": [
           "Opportunities"
@@ -2359,7 +2360,7 @@
         ]
       }
     },
-    "/api/v2/opportunities/search": {
+    "/opportunities/search": {
       "post": {
         "tags": [
           "Opportunities"
@@ -2458,7 +2459,7 @@
         ]
       }
     },
-    "/api/v2/processsetups": {
+    "/processsetups": {
       "get": {
         "tags": [
           "ProcessSetups"
@@ -2564,7 +2565,7 @@
         ]
       }
     },
-    "/api/v2/processsetups/{processsetupKey}": {
+    "/processsetups/{processsetupKey}": {
       "get": {
         "tags": [
           "ProcessSetups"
@@ -2642,7 +2643,7 @@
         ]
       }
     },
-    "/api/v2/processsetups/metadata": {
+    "/processsetups/metadata": {
       "get": {
         "tags": [
           "ProcessSetups"
@@ -2701,7 +2702,7 @@
         ]
       }
     },
-    "/api/v2/processsetups/search": {
+    "/processsetups/search": {
       "post": {
         "tags": [
           "ProcessSetups"
@@ -2800,7 +2801,7 @@
         ]
       }
     },
-    "/api/v2/processstagesetups": {
+    "/processstagesetups": {
       "get": {
         "tags": [
           "ProcessStageSetups"
@@ -2906,7 +2907,7 @@
         ]
       }
     },
-    "/api/v2/processstagesetups/{processstagesetupKey}": {
+    "/processstagesetups/{processstagesetupKey}": {
       "get": {
         "tags": [
           "ProcessStageSetups"
@@ -2984,7 +2985,7 @@
         ]
       }
     },
-    "/api/v2/processstagesetups/metadata": {
+    "/processstagesetups/metadata": {
       "get": {
         "tags": [
           "ProcessStageSetups"
@@ -3043,7 +3044,7 @@
         ]
       }
     },
-    "/api/v2/processstagesetups/search": {
+    "/processstagesetups/search": {
       "post": {
         "tags": [
           "ProcessStageSetups"
@@ -3142,7 +3143,7 @@
         ]
       }
     },
-    "/api/v2/quotaactivities": {
+    "/quotaactivities": {
       "get": {
         "tags": [
           "QuotaActivities"
@@ -3248,7 +3249,7 @@
         ]
       }
     },
-    "/api/v2/quotaactivities/{quotaactivityKey}": {
+    "/quotaactivities/{quotaactivityKey}": {
       "get": {
         "tags": [
           "QuotaActivities"
@@ -3326,7 +3327,7 @@
         ]
       }
     },
-    "/api/v2/quotaactivities/metadata": {
+    "/quotaactivities/metadata": {
       "get": {
         "tags": [
           "QuotaActivities"
@@ -3385,7 +3386,7 @@
         ]
       }
     },
-    "/api/v2/quotaactivities/search": {
+    "/quotaactivities/search": {
       "post": {
         "tags": [
           "QuotaActivities"
@@ -3484,7 +3485,7 @@
         ]
       }
     },
-    "/api/v2/quotarevenues": {
+    "/quotarevenues": {
       "get": {
         "tags": [
           "QuotaRevenues"
@@ -3590,7 +3591,7 @@
         ]
       }
     },
-    "/api/v2/quotarevenues/{quotarevenueKey}": {
+    "/quotarevenues/{quotarevenueKey}": {
       "get": {
         "tags": [
           "QuotaRevenues"
@@ -3668,7 +3669,7 @@
         ]
       }
     },
-    "/api/v2/quotarevenues/metadata": {
+    "/quotarevenues/metadata": {
       "get": {
         "tags": [
           "QuotaRevenues"
@@ -3727,7 +3728,7 @@
         ]
       }
     },
-    "/api/v2/quotarevenues/search": {
+    "/quotarevenues/search": {
       "post": {
         "tags": [
           "QuotaRevenues"
@@ -3826,7 +3827,7 @@
         ]
       }
     },
-    "/api/v2/salesteams": {
+    "/salesteams": {
       "get": {
         "tags": [
           "SalesTeams"
@@ -3932,7 +3933,7 @@
         ]
       }
     },
-    "/api/v2/salesteams/{salesteamKey}": {
+    "/salesteams/{salesteamKey}": {
       "get": {
         "tags": [
           "SalesTeams"
@@ -4010,7 +4011,7 @@
         ]
       }
     },
-    "/api/v2/salesteams/metadata": {
+    "/salesteams/metadata": {
       "get": {
         "tags": [
           "SalesTeams"
@@ -4069,7 +4070,7 @@
         ]
       }
     },
-    "/api/v2/salesteams/search": {
+    "/salesteams/search": {
       "post": {
         "tags": [
           "SalesTeams"
@@ -4168,7 +4169,7 @@
         ]
       }
     },
-    "/api/v2/tasks": {
+    "/tasks": {
       "get": {
         "tags": [
           "Tasks"
@@ -4274,7 +4275,7 @@
         ]
       }
     },
-    "/api/v2/tasks/{taskKey}": {
+    "/tasks/{taskKey}": {
       "get": {
         "tags": [
           "Tasks"
@@ -4352,7 +4353,7 @@
         ]
       }
     },
-    "/api/v2/tasks/metadata": {
+    "/tasks/metadata": {
       "get": {
         "tags": [
           "Tasks"
@@ -4411,7 +4412,7 @@
         ]
       }
     },
-    "/api/v2/tasks/search": {
+    "/tasks/search": {
       "post": {
         "tags": [
           "Tasks"
@@ -4510,7 +4511,7 @@
         ]
       }
     },
-    "/api/v2/territories": {
+    "/territories": {
       "get": {
         "tags": [
           "Territories"
@@ -4616,7 +4617,7 @@
         ]
       }
     },
-    "/api/v2/territories/{territoryKey}": {
+    "/territories/{territoryKey}": {
       "get": {
         "tags": [
           "Territories"
@@ -4694,7 +4695,7 @@
         ]
       }
     },
-    "/api/v2/territories/metadata": {
+    "/territories/metadata": {
       "get": {
         "tags": [
           "Territories"
@@ -4753,7 +4754,7 @@
         ]
       }
     },
-    "/api/v2/territories/search": {
+    "/territories/search": {
       "post": {
         "tags": [
           "Territories"
@@ -4852,7 +4853,7 @@
         ]
       }
     },
-    "/api/v2/users": {
+    "/users": {
       "get": {
         "tags": [
           "Users"
@@ -4958,7 +4959,7 @@
         ]
       }
     },
-    "/api/v2/users/{userKey}": {
+    "/users/{userKey}": {
       "get": {
         "tags": [
           "Users"
@@ -5036,7 +5037,7 @@
         ]
       }
     },
-    "/api/v2/users/metadata": {
+    "/users/metadata": {
       "get": {
         "tags": [
           "Users"
@@ -5095,7 +5096,7 @@
         ]
       }
     },
-    "/api/v2/users/search": {
+    "/users/search": {
       "post": {
         "tags": [
           "Users"
