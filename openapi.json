@@ -1,1 +1,618 @@
-my new file contents
+{
+    "openapi": "3.0.1",
+    "info": {
+        "title": "FerretV2 API",
+        "version": "v2"
+    },
+    "paths": {
+        "/api/v2/opportunities/{opportunityKey}/follow": {
+            "post": {
+                "tags": [
+                    "Opportunities"
+                ],
+                "summary": "Follow an opportunity",
+                "parameters": [
+                    {
+                        "name": "opportunityKey",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationProblemDetails"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v2/opportunities": {
+            "get": {
+                "tags": [
+                    "Opportunities"
+                ],
+                "summary": "Get list of opportunities",
+                "parameters": [
+                    {
+                        "name": "scope",
+                        "in": "query",
+                        "description": "",
+                        "required": true,
+                        "style": "form",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    {
+                        "name": "pageSize",
+                        "in": "query",
+                        "description": "",
+                        "required": true,
+                        "style": "form",
+                        "schema": {
+                            "type": "integer",
+                            "format": "int32"
+                        },
+                        "example": 100
+                    },
+                    {
+                        "name": "orderBy",
+                        "in": "query",
+                        "description": "",
+                        "style": "form",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "example": [
+                            "Key:ASC"
+                        ]
+                    },
+                    {
+                        "name": "pageKey",
+                        "in": "query",
+                        "description": "",
+                        "style": "form",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SingleResultViewModel"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationProblemDetails"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v2/opportunities/{opportunityKey}": {
+            "get": {
+                "tags": [
+                    "Opportunities"
+                ],
+                "summary": "Get a single opportunity by key",
+                "parameters": [
+                    {
+                        "name": "opportunityKey",
+                        "in": "path",
+                        "required": true,
+                        "style": "simple",
+                        "schema": {
+                            "type": "string"
+                        }
+                    },
+                    {
+                        "name": "scope",
+                        "in": "query",
+                        "required": true,
+                        "style": "form",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SingleResultViewModel"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationProblemDetails"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v2/opportunities/metadata": {
+            "get": {
+                "tags": [
+                    "Opportunities"
+                ],
+                "summary": "Get metadata for opportunity",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "additionalProperties": {}
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationProblemDetails"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        },
+        "/api/v2/opportunities/search": {
+            "post": {
+                "tags": [
+                    "Opportunities"
+                ],
+                "summary": "Search for opportunities",
+                "requestBody": {
+                    "content": {
+                        "application/json-patch+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SearchParametersModel"
+                            },
+                            "examples": {
+                                "Syntax Example": {
+                                    "value": {
+                                        "pageKey": "",
+                                        "pageSize": 10,
+                                        "scope": [
+                                            "FieldToObtain"
+                                        ],
+                                        "criteria": {
+                                            "FieldToSearch": {
+                                                "$EQ": "ValueToSearch"
+                                            }
+                                        },
+                                        "orderBy": {
+                                            "FieldToOrderBy": "ASC"
+                                        },
+                                        "groupBy": [
+                                            "FieldToGroupBy"
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SearchParametersModel"
+                            },
+                            "examples": {
+                                "Syntax Example": {
+                                    "value": {
+                                        "pageKey": "",
+                                        "pageSize": 10,
+                                        "scope": [
+                                            "FieldToObtain"
+                                        ],
+                                        "criteria": {
+                                            "FieldToSearch": {
+                                                "$EQ": "ValueToSearch"
+                                            }
+                                        },
+                                        "orderBy": {
+                                            "FieldToOrderBy": "ASC"
+                                        },
+                                        "groupBy": [
+                                            "FieldToGroupBy"
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "text/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SearchParametersModel"
+                            },
+                            "examples": {
+                                "Syntax Example": {
+                                    "value": {
+                                        "pageKey": "",
+                                        "pageSize": 10,
+                                        "scope": [
+                                            "FieldToObtain"
+                                        ],
+                                        "criteria": {
+                                            "FieldToSearch": {
+                                                "$EQ": "ValueToSearch"
+                                            }
+                                        },
+                                        "orderBy": {
+                                            "FieldToOrderBy": "ASC"
+                                        },
+                                        "groupBy": [
+                                            "FieldToGroupBy"
+                                        ]
+                                    }
+                                }
+                            }
+                        },
+                        "application/*+json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/SearchParametersModel"
+                            },
+                            "examples": {
+                                "Syntax Example": {
+                                    "value": {
+                                        "pageKey": "",
+                                        "pageSize": 10,
+                                        "scope": [
+                                            "FieldToObtain"
+                                        ],
+                                        "criteria": {
+                                            "FieldToSearch": {
+                                                "$EQ": "ValueToSearch"
+                                            }
+                                        },
+                                        "orderBy": {
+                                            "FieldToOrderBy": "ASC"
+                                        },
+                                        "groupBy": [
+                                            "FieldToGroupBy"
+                                        ]
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/SingleResultViewModel"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ValidationProblemDetails"
+                                }
+                            }
+                        }
+                    },
+                    "401": {
+                        "description": "Unauthorized",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Server Error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "$ref": "#/components/schemas/ProblemDetails"
+                                }
+                            }
+                        }
+                    }
+                },
+                "security": [
+                    {
+                        "Bearer": []
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "ProblemDetails": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "title": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "status": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "detail": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "instance": {
+                        "type": "string",
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": {}
+            },
+            "SearchParametersModel": {
+                "type": "object",
+                "properties": {
+                    "pageKey": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "pageSize": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "scope": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "nullable": true
+                    },
+                    "criteria": {
+                        "type": "object",
+                        "additionalProperties": {},
+                        "nullable": true
+                    },
+                    "orderBy": {
+                        "type": "object",
+                        "additionalProperties": {},
+                        "nullable": true
+                    },
+                    "groupBy": {
+                        "type": "array",
+                        "items": {
+                            "type": "string"
+                        },
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "SingleResultDataModel": {
+                "type": "object",
+                "properties": {
+                    "item": {
+                        "type": "object",
+                        "additionalProperties": {},
+                        "nullable": true
+                    }
+                },
+                "additionalProperties": false
+            },
+            "SingleResultViewModel": {
+                "type": "object",
+                "properties": {
+                    "message": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "data": {
+                        "$ref": "#/components/schemas/SingleResultDataModel"
+                    }
+                },
+                "additionalProperties": false
+            },
+            "ValidationProblemDetails": {
+                "type": "object",
+                "properties": {
+                    "type": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "title": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "status": {
+                        "type": "integer",
+                        "format": "int32",
+                        "nullable": true
+                    },
+                    "detail": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "instance": {
+                        "type": "string",
+                        "nullable": true
+                    },
+                    "errors": {
+                        "type": "object",
+                        "additionalProperties": {
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "nullable": true,
+                        "readOnly": true
+                    }
+                },
+                "additionalProperties": {}
+            }
+        },
+        "securitySchemes": {
+            "Bearer": {
+                "type": "apiKey",
+                "description": "Authorization header",
+                "name": "Authorization",
+                "in": "header"
+            }
+        }
+    }
+}
