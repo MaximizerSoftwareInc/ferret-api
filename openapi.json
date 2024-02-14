@@ -1,618 +1,5338 @@
 {
-    "openapi": "3.0.1",
-    "info": {
-        "title": "FerretV2 API",
-        "version": "v2"
+  "openapi": "3.0.1",
+  "info": {
+    "title": "FerretV2 API",
+    "version": "v2"
+  },
+  "paths": {
+    "/api/v2/abentries/{abentryKey}": {
+      "get": {
+        "tags": [
+          "AbEntries"
+        ],
+        "summary": "Get a single abentry by key",
+        "parameters": [
+          {
+            "name": "abentryKey",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
     },
-    "paths": {
-        "/api/v2/opportunities/{opportunityKey}/follow": {
-            "post": {
-                "tags": [
-                    "Opportunities"
-                ],
-                "summary": "Follow an opportunity",
-                "parameters": [
-                    {
-                        "name": "opportunityKey",
-                        "in": "path",
-                        "required": true,
-                        "style": "simple",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success"
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ValidationProblemDetails"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ProblemDetails"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Server Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ProblemDetails"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
+    "/api/v2/abentries/metadata": {
+      "get": {
+        "tags": [
+          "AbEntries"
+        ],
+        "summary": "Get metadata for abentry",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": { }
+                  }
+                }
+              }
             }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
         },
-        "/api/v2/opportunities": {
-            "get": {
-                "tags": [
-                    "Opportunities"
-                ],
-                "summary": "Get list of opportunities",
-                "parameters": [
-                    {
-                        "name": "scope",
-                        "in": "query",
-                        "description": "",
-                        "required": true,
-                        "style": "form",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    },
-                    {
-                        "name": "pageSize",
-                        "in": "query",
-                        "description": "",
-                        "required": true,
-                        "style": "form",
-                        "schema": {
-                            "type": "integer",
-                            "format": "int32"
-                        },
-                        "example": 100
-                    },
-                    {
-                        "name": "orderBy",
-                        "in": "query",
-                        "description": "",
-                        "style": "form",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        },
-                        "example": [
-                            "Key:ASC"
-                        ]
-                    },
-                    {
-                        "name": "pageKey",
-                        "in": "query",
-                        "description": "",
-                        "style": "form",
-                        "schema": {
-                            "type": "string"
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/SingleResultViewModel"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ValidationProblemDetails"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ProblemDetails"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Server Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ProblemDetails"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
-            }
-        },
-        "/api/v2/opportunities/{opportunityKey}": {
-            "get": {
-                "tags": [
-                    "Opportunities"
-                ],
-                "summary": "Get a single opportunity by key",
-                "parameters": [
-                    {
-                        "name": "opportunityKey",
-                        "in": "path",
-                        "required": true,
-                        "style": "simple",
-                        "schema": {
-                            "type": "string"
-                        }
-                    },
-                    {
-                        "name": "scope",
-                        "in": "query",
-                        "required": true,
-                        "style": "form",
-                        "schema": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        }
-                    }
-                ],
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/SingleResultViewModel"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ValidationProblemDetails"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ProblemDetails"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Server Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ProblemDetails"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
-            }
-        },
-        "/api/v2/opportunities/metadata": {
-            "get": {
-                "tags": [
-                    "Opportunities"
-                ],
-                "summary": "Get metadata for opportunity",
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "type": "array",
-                                    "items": {
-                                        "type": "object",
-                                        "additionalProperties": {}
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ValidationProblemDetails"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ProblemDetails"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Server Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ProblemDetails"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
-            }
-        },
-        "/api/v2/opportunities/search": {
-            "post": {
-                "tags": [
-                    "Opportunities"
-                ],
-                "summary": "Search for opportunities",
-                "requestBody": {
-                    "content": {
-                        "application/json-patch+json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/SearchParametersModel"
-                            },
-                            "examples": {
-                                "Syntax Example": {
-                                    "value": {
-                                        "pageKey": "",
-                                        "pageSize": 10,
-                                        "scope": [
-                                            "FieldToObtain"
-                                        ],
-                                        "criteria": {
-                                            "FieldToSearch": {
-                                                "$EQ": "ValueToSearch"
-                                            }
-                                        },
-                                        "orderBy": {
-                                            "FieldToOrderBy": "ASC"
-                                        },
-                                        "groupBy": [
-                                            "FieldToGroupBy"
-                                        ]
-                                    }
-                                }
-                            }
-                        },
-                        "application/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/SearchParametersModel"
-                            },
-                            "examples": {
-                                "Syntax Example": {
-                                    "value": {
-                                        "pageKey": "",
-                                        "pageSize": 10,
-                                        "scope": [
-                                            "FieldToObtain"
-                                        ],
-                                        "criteria": {
-                                            "FieldToSearch": {
-                                                "$EQ": "ValueToSearch"
-                                            }
-                                        },
-                                        "orderBy": {
-                                            "FieldToOrderBy": "ASC"
-                                        },
-                                        "groupBy": [
-                                            "FieldToGroupBy"
-                                        ]
-                                    }
-                                }
-                            }
-                        },
-                        "text/json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/SearchParametersModel"
-                            },
-                            "examples": {
-                                "Syntax Example": {
-                                    "value": {
-                                        "pageKey": "",
-                                        "pageSize": 10,
-                                        "scope": [
-                                            "FieldToObtain"
-                                        ],
-                                        "criteria": {
-                                            "FieldToSearch": {
-                                                "$EQ": "ValueToSearch"
-                                            }
-                                        },
-                                        "orderBy": {
-                                            "FieldToOrderBy": "ASC"
-                                        },
-                                        "groupBy": [
-                                            "FieldToGroupBy"
-                                        ]
-                                    }
-                                }
-                            }
-                        },
-                        "application/*+json": {
-                            "schema": {
-                                "$ref": "#/components/schemas/SearchParametersModel"
-                            },
-                            "examples": {
-                                "Syntax Example": {
-                                    "value": {
-                                        "pageKey": "",
-                                        "pageSize": 10,
-                                        "scope": [
-                                            "FieldToObtain"
-                                        ],
-                                        "criteria": {
-                                            "FieldToSearch": {
-                                                "$EQ": "ValueToSearch"
-                                            }
-                                        },
-                                        "orderBy": {
-                                            "FieldToOrderBy": "ASC"
-                                        },
-                                        "groupBy": [
-                                            "FieldToGroupBy"
-                                        ]
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "200": {
-                        "description": "Success",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/SingleResultViewModel"
-                                }
-                            }
-                        }
-                    },
-                    "400": {
-                        "description": "Bad Request",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ValidationProblemDetails"
-                                }
-                            }
-                        }
-                    },
-                    "401": {
-                        "description": "Unauthorized",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ProblemDetails"
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Server Error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "$ref": "#/components/schemas/ProblemDetails"
-                                }
-                            }
-                        }
-                    }
-                },
-                "security": [
-                    {
-                        "Bearer": []
-                    }
-                ]
-            }
-        }
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
     },
-    "components": {
-        "schemas": {
-            "ProblemDetails": {
-                "type": "object",
-                "properties": {
-                    "type": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "title": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "status": {
-                        "type": "integer",
-                        "format": "int32",
-                        "nullable": true
-                    },
-                    "detail": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "instance": {
-                        "type": "string",
-                        "nullable": true
-                    }
-                },
-                "additionalProperties": {}
-            },
-            "SearchParametersModel": {
-                "type": "object",
-                "properties": {
-                    "pageKey": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "pageSize": {
-                        "type": "integer",
-                        "format": "int32",
-                        "nullable": true
-                    },
-                    "scope": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "nullable": true
-                    },
-                    "criteria": {
-                        "type": "object",
-                        "additionalProperties": {},
-                        "nullable": true
-                    },
-                    "orderBy": {
-                        "type": "object",
-                        "additionalProperties": {},
-                        "nullable": true
-                    },
-                    "groupBy": {
-                        "type": "array",
-                        "items": {
-                            "type": "string"
-                        },
-                        "nullable": true
-                    }
-                },
-                "additionalProperties": false
-            },
-            "SingleResultDataModel": {
-                "type": "object",
-                "properties": {
-                    "item": {
-                        "type": "object",
-                        "additionalProperties": {},
-                        "nullable": true
-                    }
-                },
-                "additionalProperties": false
-            },
-            "SingleResultViewModel": {
-                "type": "object",
-                "properties": {
-                    "message": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "data": {
-                        "$ref": "#/components/schemas/SingleResultDataModel"
-                    }
-                },
-                "additionalProperties": false
-            },
-            "ValidationProblemDetails": {
-                "type": "object",
-                "properties": {
-                    "type": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "title": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "status": {
-                        "type": "integer",
-                        "format": "int32",
-                        "nullable": true
-                    },
-                    "detail": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "instance": {
-                        "type": "string",
-                        "nullable": true
-                    },
-                    "errors": {
-                        "type": "object",
-                        "additionalProperties": {
-                            "type": "array",
-                            "items": {
-                                "type": "string"
-                            }
-                        },
-                        "nullable": true,
-                        "readOnly": true
-                    }
-                },
-                "additionalProperties": {}
+    "/api/v2/abentries": {
+      "get": {
+        "tags": [
+          "AbEntries"
+        ],
+        "summary": "Get list of abentries",
+        "parameters": [
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
             }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 100
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "example": [
+              "Key:ASC"
+            ]
+          },
+          {
+            "name": "pageKey",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
         },
-        "securitySchemes": {
-            "Bearer": {
-                "type": "apiKey",
-                "description": "Authorization header",
-                "name": "Authorization",
-                "in": "header"
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/abentries/search": {
+      "post": {
+        "tags": [
+          "AbEntries"
+        ],
+        "summary": "Search for abentries",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
             }
-        }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/addresses/{addressKey}": {
+      "get": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Get a single address by key",
+        "parameters": [
+          {
+            "name": "addressKey",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/addresses/metadata": {
+      "get": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Get metadata for address",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": { }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/addresses": {
+      "get": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Get list of addresses",
+        "parameters": [
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 100
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "example": [
+              "Key:ASC"
+            ]
+          },
+          {
+            "name": "pageKey",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/addresses/search": {
+      "post": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "Search for addresses",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/appointments/{appointmentKey}": {
+      "get": {
+        "tags": [
+          "Appointments"
+        ],
+        "summary": "Get a single appointment by key",
+        "parameters": [
+          {
+            "name": "appointmentKey",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/appointments/metadata": {
+      "get": {
+        "tags": [
+          "Appointments"
+        ],
+        "summary": "Get metadata for appointment",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": { }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/appointments": {
+      "get": {
+        "tags": [
+          "Appointments"
+        ],
+        "summary": "Get list of appointments",
+        "parameters": [
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 100
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "example": [
+              "Key:ASC"
+            ]
+          },
+          {
+            "name": "pageKey",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/appointments/search": {
+      "post": {
+        "tags": [
+          "Appointments"
+        ],
+        "summary": "Search for appointments",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/cases/{caseKey}": {
+      "get": {
+        "tags": [
+          "Cases"
+        ],
+        "summary": "Get a single case by key",
+        "parameters": [
+          {
+            "name": "caseKey",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/cases/metadata": {
+      "get": {
+        "tags": [
+          "Cases"
+        ],
+        "summary": "Get metadata for case",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": { }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/cases": {
+      "get": {
+        "tags": [
+          "Cases"
+        ],
+        "summary": "Get list of cases",
+        "parameters": [
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 100
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "example": [
+              "Key:ASC"
+            ]
+          },
+          {
+            "name": "pageKey",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/cases/search": {
+      "post": {
+        "tags": [
+          "Cases"
+        ],
+        "summary": "Search for cases",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/currencyrates/{currencyrateKey}": {
+      "get": {
+        "tags": [
+          "CurrencyRates"
+        ],
+        "summary": "Get a single currencyrate by key",
+        "parameters": [
+          {
+            "name": "currencyrateKey",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/currencyrates/metadata": {
+      "get": {
+        "tags": [
+          "CurrencyRates"
+        ],
+        "summary": "Get metadata for currencyrate",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": { }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/currencyrates": {
+      "get": {
+        "tags": [
+          "CurrencyRates"
+        ],
+        "summary": "Get list of currencyrates",
+        "parameters": [
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 100
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "example": [
+              "Key:ASC"
+            ]
+          },
+          {
+            "name": "pageKey",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/currencyrates/search": {
+      "post": {
+        "tags": [
+          "CurrencyRates"
+        ],
+        "summary": "Search for currencyrates",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/leads/{leadKey}": {
+      "get": {
+        "tags": [
+          "Leads"
+        ],
+        "summary": "Get a single lead by key",
+        "parameters": [
+          {
+            "name": "leadKey",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/leads/metadata": {
+      "get": {
+        "tags": [
+          "Leads"
+        ],
+        "summary": "Get metadata for lead",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": { }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/leads": {
+      "get": {
+        "tags": [
+          "Leads"
+        ],
+        "summary": "Get list of leads",
+        "parameters": [
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 100
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "example": [
+              "Key:ASC"
+            ]
+          },
+          {
+            "name": "pageKey",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/leads/search": {
+      "post": {
+        "tags": [
+          "Leads"
+        ],
+        "summary": "Search for leads",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/opportunities/{opportunityKey}/follow": {
+      "post": {
+        "tags": [
+          "Opportunities"
+        ],
+        "summary": "Follow an opportunity",
+        "parameters": [
+          {
+            "name": "opportunityKey",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/opportunities": {
+      "get": {
+        "tags": [
+          "Opportunities"
+        ],
+        "summary": "Get list of opportunities",
+        "parameters": [
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 100
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "example": [
+              "Key:ASC"
+            ]
+          },
+          {
+            "name": "pageKey",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/opportunities/{opportunityKey}": {
+      "get": {
+        "tags": [
+          "Opportunities"
+        ],
+        "summary": "Get a single opportunity by key",
+        "parameters": [
+          {
+            "name": "opportunityKey",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/opportunities/metadata": {
+      "get": {
+        "tags": [
+          "Opportunities"
+        ],
+        "summary": "Get metadata for opportunity",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": { }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/opportunities/search": {
+      "post": {
+        "tags": [
+          "Opportunities"
+        ],
+        "summary": "Search for opportunities",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/processsetups": {
+      "get": {
+        "tags": [
+          "ProcessSetups"
+        ],
+        "summary": "Get list of processsetups",
+        "parameters": [
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 100
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "example": [
+              "Key:ASC"
+            ]
+          },
+          {
+            "name": "pageKey",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/processsetups/{processsetupKey}": {
+      "get": {
+        "tags": [
+          "ProcessSetups"
+        ],
+        "summary": "Get a single processsetup by key",
+        "parameters": [
+          {
+            "name": "processsetupKey",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/processsetups/metadata": {
+      "get": {
+        "tags": [
+          "ProcessSetups"
+        ],
+        "summary": "Get metadata for processsetup",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": { }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/processsetups/search": {
+      "post": {
+        "tags": [
+          "ProcessSetups"
+        ],
+        "summary": "Search for processsetups",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/processstagesetups": {
+      "get": {
+        "tags": [
+          "ProcessStageSetups"
+        ],
+        "summary": "Get list of processstagesetups",
+        "parameters": [
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 100
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "example": [
+              "Key:ASC"
+            ]
+          },
+          {
+            "name": "pageKey",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/processstagesetups/{processstagesetupKey}": {
+      "get": {
+        "tags": [
+          "ProcessStageSetups"
+        ],
+        "summary": "Get a single processstagesetup by key",
+        "parameters": [
+          {
+            "name": "processstagesetupKey",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/processstagesetups/metadata": {
+      "get": {
+        "tags": [
+          "ProcessStageSetups"
+        ],
+        "summary": "Get metadata for processstagesetup",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": { }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/processstagesetups/search": {
+      "post": {
+        "tags": [
+          "ProcessStageSetups"
+        ],
+        "summary": "Search for processstagesetups",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/quotaactivities": {
+      "get": {
+        "tags": [
+          "QuotaActivities"
+        ],
+        "summary": "Get list of quotaactivities",
+        "parameters": [
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 100
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "example": [
+              "Key:ASC"
+            ]
+          },
+          {
+            "name": "pageKey",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/quotaactivities/{quotaactivityKey}": {
+      "get": {
+        "tags": [
+          "QuotaActivities"
+        ],
+        "summary": "Get a single quotaactivity by key",
+        "parameters": [
+          {
+            "name": "quotaactivityKey",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/quotaactivities/metadata": {
+      "get": {
+        "tags": [
+          "QuotaActivities"
+        ],
+        "summary": "Get metadata for quotaactivity",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": { }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/quotaactivities/search": {
+      "post": {
+        "tags": [
+          "QuotaActivities"
+        ],
+        "summary": "Search for quotaactivities",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/quotarevenues": {
+      "get": {
+        "tags": [
+          "QuotaRevenues"
+        ],
+        "summary": "Get list of quotarevenues",
+        "parameters": [
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 100
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "example": [
+              "Key:ASC"
+            ]
+          },
+          {
+            "name": "pageKey",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/quotarevenues/{quotarevenueKey}": {
+      "get": {
+        "tags": [
+          "QuotaRevenues"
+        ],
+        "summary": "Get a single quotarevenue by key",
+        "parameters": [
+          {
+            "name": "quotarevenueKey",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/quotarevenues/metadata": {
+      "get": {
+        "tags": [
+          "QuotaRevenues"
+        ],
+        "summary": "Get metadata for quotarevenue",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": { }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/quotarevenues/search": {
+      "post": {
+        "tags": [
+          "QuotaRevenues"
+        ],
+        "summary": "Search for quotarevenues",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/salesteams": {
+      "get": {
+        "tags": [
+          "SalesTeams"
+        ],
+        "summary": "Get list of salesteams",
+        "parameters": [
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 100
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "example": [
+              "Key:ASC"
+            ]
+          },
+          {
+            "name": "pageKey",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/salesteams/{salesteamKey}": {
+      "get": {
+        "tags": [
+          "SalesTeams"
+        ],
+        "summary": "Get a single salesteam by key",
+        "parameters": [
+          {
+            "name": "salesteamKey",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/salesteams/metadata": {
+      "get": {
+        "tags": [
+          "SalesTeams"
+        ],
+        "summary": "Get metadata for salesteam",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": { }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/salesteams/search": {
+      "post": {
+        "tags": [
+          "SalesTeams"
+        ],
+        "summary": "Search for salesteams",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/tasks": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Get list of tasks",
+        "parameters": [
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 100
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "example": [
+              "Key:ASC"
+            ]
+          },
+          {
+            "name": "pageKey",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/tasks/{taskKey}": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Get a single task by key",
+        "parameters": [
+          {
+            "name": "taskKey",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/tasks/metadata": {
+      "get": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Get metadata for task",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": { }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/tasks/search": {
+      "post": {
+        "tags": [
+          "Tasks"
+        ],
+        "summary": "Search for tasks",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/territories": {
+      "get": {
+        "tags": [
+          "Territories"
+        ],
+        "summary": "Get list of territories",
+        "parameters": [
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 100
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "example": [
+              "Key:ASC"
+            ]
+          },
+          {
+            "name": "pageKey",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/territories/{territoryKey}": {
+      "get": {
+        "tags": [
+          "Territories"
+        ],
+        "summary": "Get a single territory by key",
+        "parameters": [
+          {
+            "name": "territoryKey",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/territories/metadata": {
+      "get": {
+        "tags": [
+          "Territories"
+        ],
+        "summary": "Get metadata for territory",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": { }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/territories/search": {
+      "post": {
+        "tags": [
+          "Territories"
+        ],
+        "summary": "Search for territories",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/users": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get list of users",
+        "parameters": [
+          {
+            "name": "scope",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          {
+            "name": "pageSize",
+            "in": "query",
+            "description": "",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "example": 100
+          },
+          {
+            "name": "orderBy",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "example": [
+              "Key:ASC"
+            ]
+          },
+          {
+            "name": "pageKey",
+            "in": "query",
+            "description": "",
+            "style": "form",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/users/{userKey}": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get a single user by key",
+        "parameters": [
+          {
+            "name": "userKey",
+            "in": "path",
+            "required": true,
+            "style": "simple",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "scope",
+            "in": "query",
+            "required": true,
+            "style": "form",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/users/metadata": {
+      "get": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Get metadata for user",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": { }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/api/v2/users/search": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Search for users",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SearchParametersModel"
+              },
+              "examples": {
+                "Syntax Example": {
+                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
     }
+  },
+  "components": {
+    "schemas": {
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": { }
+      },
+      "SearchParametersModel": {
+        "type": "object",
+        "properties": {
+          "pageKey": {
+            "type": "string",
+            "nullable": true
+          },
+          "pageSize": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "scope": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          },
+          "criteria": {
+            "type": "object",
+            "additionalProperties": { },
+            "nullable": true
+          },
+          "orderBy": {
+            "type": "object",
+            "additionalProperties": { },
+            "nullable": true
+          },
+          "groupBy": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SingleResultDataModel": {
+        "type": "object",
+        "properties": {
+          "item": {
+            "type": "object",
+            "additionalProperties": { },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SingleResultViewModel": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/SingleResultDataModel"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ValidationProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "detail": {
+            "type": "string",
+            "nullable": true
+          },
+          "instance": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "nullable": true,
+            "readOnly": true
+          }
+        },
+        "additionalProperties": { }
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "Authorization header",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  }
 }
