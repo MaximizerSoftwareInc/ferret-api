@@ -25,7 +25,6 @@
           {
             "name": "scope",
             "in": "query",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -154,7 +153,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -167,13 +165,11 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
-            },
-            "example": 100
+            }
           },
           {
             "name": "orderBy",
@@ -367,7 +363,6 @@
           {
             "name": "scope",
             "in": "query",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -496,7 +491,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -509,13 +503,11 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
-            },
-            "example": 100
+            }
           },
           {
             "name": "orderBy",
@@ -709,7 +701,6 @@
           {
             "name": "scope",
             "in": "query",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -838,7 +829,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -851,13 +841,11 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
-            },
-            "example": 100
+            }
           },
           {
             "name": "orderBy",
@@ -1051,7 +1039,6 @@
           {
             "name": "scope",
             "in": "query",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -1180,7 +1167,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -1193,13 +1179,11 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
-            },
-            "example": 100
+            }
           },
           {
             "name": "orderBy",
@@ -1393,7 +1377,6 @@
           {
             "name": "scope",
             "in": "query",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -1522,7 +1505,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -1535,13 +1517,11 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
-            },
-            "example": 100
+            }
           },
           {
             "name": "orderBy",
@@ -1735,7 +1715,6 @@
           {
             "name": "scope",
             "in": "query",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -1864,7 +1843,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -1877,13 +1855,11 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
-            },
-            "example": 100
+            }
           },
           {
             "name": "orderBy",
@@ -2128,7 +2104,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -2141,13 +2116,11 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
-            },
-            "example": 100
+            }
           },
           {
             "name": "orderBy",
@@ -2242,7 +2215,6 @@
           {
             "name": "scope",
             "in": "query",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -2470,7 +2442,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -2483,13 +2454,11 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
-            },
-            "example": 100
+            }
           },
           {
             "name": "orderBy",
@@ -2584,7 +2553,6 @@
           {
             "name": "scope",
             "in": "query",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -2812,7 +2780,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -2825,13 +2792,11 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
-            },
-            "example": 100
+            }
           },
           {
             "name": "orderBy",
@@ -2926,7 +2891,6 @@
           {
             "name": "scope",
             "in": "query",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -3154,7 +3118,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -3167,13 +3130,11 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
-            },
-            "example": 100
+            }
           },
           {
             "name": "orderBy",
@@ -3268,7 +3229,6 @@
           {
             "name": "scope",
             "in": "query",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -3496,7 +3456,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -3509,13 +3468,11 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
-            },
-            "example": 100
+            }
           },
           {
             "name": "orderBy",
@@ -3610,7 +3567,6 @@
           {
             "name": "scope",
             "in": "query",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -3838,7 +3794,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -3851,13 +3806,11 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
-            },
-            "example": 100
+            }
           },
           {
             "name": "orderBy",
@@ -3952,7 +3905,6 @@
           {
             "name": "scope",
             "in": "query",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -4180,7 +4132,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -4193,13 +4144,11 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
-            },
-            "example": 100
+            }
           },
           {
             "name": "orderBy",
@@ -4294,7 +4243,6 @@
           {
             "name": "scope",
             "in": "query",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -4522,7 +4470,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -4535,13 +4482,11 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
-            },
-            "example": 100
+            }
           },
           {
             "name": "orderBy",
@@ -4636,7 +4581,6 @@
           {
             "name": "scope",
             "in": "query",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -4864,7 +4808,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
@@ -4877,13 +4820,11 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
-            },
-            "example": 100
+            }
           },
           {
             "name": "orderBy",
@@ -4978,7 +4919,6 @@
           {
             "name": "scope",
             "in": "query",
-            "required": true,
             "style": "form",
             "schema": {
               "type": "array",
