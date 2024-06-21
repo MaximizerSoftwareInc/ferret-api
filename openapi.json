@@ -5,8 +5,13 @@
     "version": "v2"
   },
 "servers": [{"url": "https://api.maximizer.com/ferret/v2"}],
+  "servers": [
+    {
+      "url": "https://api.maximizer.com/ferret/v2"
+    }
+  ],
   "paths": {
-    "/abentries/{abentryKey}": {
+    "/v2/abentries/{abentryKey}": {
       "get": {
         "tags": [
           "AbEntries"
@@ -17,7 +22,6 @@
             "name": "abentryKey",
             "in": "path",
             "required": true,
-            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -25,7 +29,6 @@
           {
             "name": "scope",
             "in": "query",
-            "style": "form",
             "schema": {
               "type": "array",
               "items": {
@@ -83,7 +86,7 @@
         ]
       }
     },
-    "/abentries/metadata": {
+    "/v2/abentries/metadata": {
       "get": {
         "tags": [
           "AbEntries"
@@ -142,7 +145,7 @@
         ]
       }
     },
-    "/abentries": {
+    "/v2/abentries": {
       "get": {
         "tags": [
           "AbEntries"
@@ -153,7 +156,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "array",
               "items": {
@@ -165,7 +167,6 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -175,22 +176,22 @@
             "name": "orderBy",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "example": [
-              "Key:ASC"
-            ]
+              "type": "string"
+            }
+          },
+          {
+            "name": "OrderDirection",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "pageKey",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -245,7 +246,7 @@
         ]
       }
     },
-    "/abentries/search": {
+    "/v2/abentries/search": {
       "post": {
         "tags": [
           "AbEntries"
@@ -259,7 +260,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -269,7 +270,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -279,7 +280,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -289,7 +290,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             }
@@ -344,7 +345,7 @@
         ]
       }
     },
-    "/addresses/{addressKey}": {
+    "/v2/addresses/{addressKey}": {
       "get": {
         "tags": [
           "Addresses"
@@ -355,7 +356,6 @@
             "name": "addressKey",
             "in": "path",
             "required": true,
-            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -363,7 +363,6 @@
           {
             "name": "scope",
             "in": "query",
-            "style": "form",
             "schema": {
               "type": "array",
               "items": {
@@ -421,7 +420,7 @@
         ]
       }
     },
-    "/addresses/metadata": {
+    "/v2/addresses/metadata": {
       "get": {
         "tags": [
           "Addresses"
@@ -480,7 +479,7 @@
         ]
       }
     },
-    "/addresses": {
+    "/v2/addresses": {
       "get": {
         "tags": [
           "Addresses"
@@ -491,7 +490,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "array",
               "items": {
@@ -503,7 +501,6 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -513,22 +510,22 @@
             "name": "orderBy",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "example": [
-              "Key:ASC"
-            ]
+              "type": "string"
+            }
+          },
+          {
+            "name": "OrderDirection",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "pageKey",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -583,7 +580,7 @@
         ]
       }
     },
-    "/addresses/search": {
+    "/v2/addresses/search": {
       "post": {
         "tags": [
           "Addresses"
@@ -597,7 +594,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -607,7 +604,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -617,7 +614,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -627,7 +624,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             }
@@ -682,7 +679,99 @@
         ]
       }
     },
-    "/cases/{caseKey}": {
+    "/v2/authenticate": {
+      "post": {
+        "tags": [
+          "Authenticate"
+        ],
+        "summary": "Authenticate without a token",
+        "requestBody": {
+          "content": {
+            "application/json-patch+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticateRequestModel"
+              }
+            },
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticateRequestModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticateRequestModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthenticateRequestModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Success"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/v2/cases/{caseKey}": {
       "get": {
         "tags": [
           "Cases"
@@ -693,7 +782,6 @@
             "name": "caseKey",
             "in": "path",
             "required": true,
-            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -701,7 +789,6 @@
           {
             "name": "scope",
             "in": "query",
-            "style": "form",
             "schema": {
               "type": "array",
               "items": {
@@ -759,7 +846,7 @@
         ]
       }
     },
-    "/cases/metadata": {
+    "/v2/cases/metadata": {
       "get": {
         "tags": [
           "Cases"
@@ -818,7 +905,7 @@
         ]
       }
     },
-    "/cases": {
+    "/v2/cases": {
       "get": {
         "tags": [
           "Cases"
@@ -829,7 +916,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "array",
               "items": {
@@ -841,7 +927,6 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -851,22 +936,22 @@
             "name": "orderBy",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "example": [
-              "Key:ASC"
-            ]
+              "type": "string"
+            }
+          },
+          {
+            "name": "OrderDirection",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "pageKey",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -921,7 +1006,7 @@
         ]
       }
     },
-    "/cases/search": {
+    "/v2/cases/search": {
       "post": {
         "tags": [
           "Cases"
@@ -935,7 +1020,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -945,7 +1030,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -955,7 +1040,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -965,7 +1050,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             }
@@ -1020,7 +1105,7 @@
         ]
       }
     },
-    "/currencyrates/{currencyrateKey}": {
+    "/v2/currencyrates/{currencyrateKey}": {
       "get": {
         "tags": [
           "CurrencyRates"
@@ -1031,7 +1116,6 @@
             "name": "currencyrateKey",
             "in": "path",
             "required": true,
-            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -1039,7 +1123,6 @@
           {
             "name": "scope",
             "in": "query",
-            "style": "form",
             "schema": {
               "type": "array",
               "items": {
@@ -1097,7 +1180,7 @@
         ]
       }
     },
-    "/currencyrates/metadata": {
+    "/v2/currencyrates/metadata": {
       "get": {
         "tags": [
           "CurrencyRates"
@@ -1156,7 +1239,7 @@
         ]
       }
     },
-    "/currencyrates": {
+    "/v2/currencyrates": {
       "get": {
         "tags": [
           "CurrencyRates"
@@ -1167,7 +1250,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "array",
               "items": {
@@ -1179,7 +1261,6 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -1189,22 +1270,22 @@
             "name": "orderBy",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "example": [
-              "Key:ASC"
-            ]
+              "type": "string"
+            }
+          },
+          {
+            "name": "OrderDirection",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "pageKey",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -1259,7 +1340,7 @@
         ]
       }
     },
-    "/currencyrates/search": {
+    "/v2/currencyrates/search": {
       "post": {
         "tags": [
           "CurrencyRates"
@@ -1273,7 +1354,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -1283,7 +1364,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -1293,7 +1374,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -1303,7 +1384,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             }
@@ -1358,7 +1439,7 @@
         ]
       }
     },
-    "/leads/{leadKey}": {
+    "/v2/leads/{leadKey}": {
       "get": {
         "tags": [
           "Leads"
@@ -1369,7 +1450,6 @@
             "name": "leadKey",
             "in": "path",
             "required": true,
-            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -1377,7 +1457,6 @@
           {
             "name": "scope",
             "in": "query",
-            "style": "form",
             "schema": {
               "type": "array",
               "items": {
@@ -1435,7 +1514,7 @@
         ]
       }
     },
-    "/leads/metadata": {
+    "/v2/leads/metadata": {
       "get": {
         "tags": [
           "Leads"
@@ -1494,7 +1573,7 @@
         ]
       }
     },
-    "/leads": {
+    "/v2/leads": {
       "get": {
         "tags": [
           "Leads"
@@ -1505,7 +1584,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "array",
               "items": {
@@ -1517,7 +1595,6 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -1527,22 +1604,22 @@
             "name": "orderBy",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "example": [
-              "Key:ASC"
-            ]
+              "type": "string"
+            }
+          },
+          {
+            "name": "OrderDirection",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "pageKey",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -1597,7 +1674,7 @@
         ]
       }
     },
-    "/leads/search": {
+    "/v2/leads/search": {
       "post": {
         "tags": [
           "Leads"
@@ -1611,7 +1688,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -1621,7 +1698,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -1631,7 +1708,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -1641,7 +1718,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             }
@@ -1696,7 +1773,7 @@
         ]
       }
     },
-    "/opportunities/{opportunityKey}/follow": {
+    "/v2/opportunities/{OpportunityKey}/follow": {
       "post": {
         "tags": [
           "Opportunities"
@@ -1704,10 +1781,9 @@
         "summary": "Follow an opportunity",
         "parameters": [
           {
-            "name": "opportunityKey",
+            "name": "OpportunityKey",
             "in": "path",
             "required": true,
-            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -1737,6 +1813,26 @@
               }
             }
           },
+          "408": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Server Error",
             "content": {
@@ -1755,7 +1851,7 @@
         ]
       }
     },
-    "/opportunities": {
+    "/v2/opportunities": {
       "get": {
         "tags": [
           "Opportunities"
@@ -1763,32 +1859,10 @@
         "summary": "Get list of opportunities",
         "parameters": [
           {
-            "name": "scope",
+            "name": "Scope",
             "in": "query",
             "description": "",
-            "style": "form",
-            "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            }
-          },
-          {
-            "name": "pageSize",
-            "in": "query",
-            "description": "",
-            "style": "form",
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "orderBy",
-            "in": "query",
-            "description": "",
-            "style": "form",
+            "required": true,
             "schema": {
               "type": "array",
               "items": {
@@ -1796,14 +1870,39 @@
               }
             },
             "example": [
-              "Key:ASC"
+              "FieldKey"
             ]
           },
           {
-            "name": "pageKey",
+            "name": "PageSize",
             "in": "query",
             "description": "",
-            "style": "form",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "OrderBy",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "OrderDirection",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "PageKey",
+            "in": "query",
+            "description": "",
             "schema": {
               "type": "string"
             }
@@ -1815,7 +1914,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SingleResultViewModel"
+                  "$ref": "#/components/schemas/ExpandoObjectMultipleResultViewModel"
                 }
               }
             }
@@ -1832,6 +1931,26 @@
           },
           "401": {
             "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
             "content": {
               "application/json": {
                 "schema": {
@@ -1858,7 +1977,7 @@
         ]
       }
     },
-    "/opportunities/{opportunityKey}": {
+    "/v2/opportunities/{OpportunityKey}": {
       "get": {
         "tags": [
           "Opportunities"
@@ -1866,24 +1985,28 @@
         "summary": "Get a single opportunity by key",
         "parameters": [
           {
-            "name": "opportunityKey",
+            "name": "OpportunityKey",
             "in": "path",
+            "description": "",
             "required": true,
-            "style": "simple",
             "schema": {
               "type": "string"
             }
           },
           {
-            "name": "scope",
+            "name": "Scope",
             "in": "query",
-            "style": "form",
+            "description": "",
+            "required": true,
             "schema": {
               "type": "array",
               "items": {
                 "type": "string"
               }
-            }
+            },
+            "example": [
+              "FieldKey"
+            ]
           }
         ],
         "responses": {
@@ -1917,6 +2040,26 @@
               }
             }
           },
+          "408": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Server Error",
             "content": {
@@ -1935,21 +2078,27 @@
         ]
       }
     },
-    "/opportunities/metadata": {
+    "/v2/opportunities/fieldOptions": {
       "get": {
         "tags": [
           "Opportunities"
         ],
-        "summary": "Get metadata for opportunity",
+        "summary": "Get field options for opportunity",
         "parameters": [
           {
-            "name": "expandFields",
+            "name": "Field",
             "in": "query",
-            "style": "form",
+            "description": "",
+            "required": true,
             "schema": {
-              "type": "boolean",
-              "default": false
-            }
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "example": [
+              "FieldKey"
+            ]
           }
         ],
         "responses": {
@@ -1987,6 +2136,26 @@
               }
             }
           },
+          "408": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
           "500": {
             "description": "Server Error",
             "content": {
@@ -2005,7 +2174,92 @@
         ]
       }
     },
-    "/opportunities/search": {
+    "/v2/opportunities/metadata": {
+      "get": {
+        "tags": [
+          "Opportunities"
+        ],
+        "summary": "Get metadata for opportunity",
+        "parameters": [
+          {
+            "name": "ExpandFields",
+            "in": "query",
+            "schema": {
+              "type": "boolean",
+              "default": false
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExpandoObjectMultipleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
+    "/v2/opportunities/search": {
       "post": {
         "tags": [
           "Opportunities"
@@ -2019,7 +2273,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -2029,7 +2283,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -2039,7 +2293,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -2049,7 +2303,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             }
@@ -2061,7 +2315,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/SingleResultViewModel"
+                  "$ref": "#/components/schemas/ExpandoObjectMultipleResultViewModel"
                 }
               }
             }
@@ -2078,6 +2332,26 @@
           },
           "401": {
             "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
             "content": {
               "application/json": {
                 "schema": {
@@ -2104,7 +2378,7 @@
         ]
       }
     },
-    "/processsetups": {
+    "/v2/processsetups": {
       "get": {
         "tags": [
           "ProcessSetups"
@@ -2115,7 +2389,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "array",
               "items": {
@@ -2127,7 +2400,6 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -2137,22 +2409,22 @@
             "name": "orderBy",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "example": [
-              "Key:ASC"
-            ]
+              "type": "string"
+            }
+          },
+          {
+            "name": "OrderDirection",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "pageKey",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -2207,7 +2479,7 @@
         ]
       }
     },
-    "/processsetups/{processsetupKey}": {
+    "/v2/processsetups/{processsetupKey}": {
       "get": {
         "tags": [
           "ProcessSetups"
@@ -2218,7 +2490,6 @@
             "name": "processsetupKey",
             "in": "path",
             "required": true,
-            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -2226,7 +2497,6 @@
           {
             "name": "scope",
             "in": "query",
-            "style": "form",
             "schema": {
               "type": "array",
               "items": {
@@ -2284,7 +2554,7 @@
         ]
       }
     },
-    "/processsetups/metadata": {
+    "/v2/processsetups/metadata": {
       "get": {
         "tags": [
           "ProcessSetups"
@@ -2343,7 +2613,7 @@
         ]
       }
     },
-    "/processsetups/search": {
+    "/v2/processsetups/search": {
       "post": {
         "tags": [
           "ProcessSetups"
@@ -2357,7 +2627,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -2367,7 +2637,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -2377,7 +2647,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -2387,7 +2657,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             }
@@ -2442,7 +2712,7 @@
         ]
       }
     },
-    "/processstagesetups": {
+    "/v2/processstagesetups": {
       "get": {
         "tags": [
           "ProcessStageSetups"
@@ -2453,7 +2723,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "array",
               "items": {
@@ -2465,7 +2734,6 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -2475,22 +2743,22 @@
             "name": "orderBy",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "example": [
-              "Key:ASC"
-            ]
+              "type": "string"
+            }
+          },
+          {
+            "name": "OrderDirection",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "pageKey",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -2545,7 +2813,7 @@
         ]
       }
     },
-    "/processstagesetups/{processstagesetupKey}": {
+    "/v2/processstagesetups/{processstagesetupKey}": {
       "get": {
         "tags": [
           "ProcessStageSetups"
@@ -2556,7 +2824,6 @@
             "name": "processstagesetupKey",
             "in": "path",
             "required": true,
-            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -2564,7 +2831,6 @@
           {
             "name": "scope",
             "in": "query",
-            "style": "form",
             "schema": {
               "type": "array",
               "items": {
@@ -2622,7 +2888,7 @@
         ]
       }
     },
-    "/processstagesetups/metadata": {
+    "/v2/processstagesetups/metadata": {
       "get": {
         "tags": [
           "ProcessStageSetups"
@@ -2681,7 +2947,7 @@
         ]
       }
     },
-    "/processstagesetups/search": {
+    "/v2/processstagesetups/search": {
       "post": {
         "tags": [
           "ProcessStageSetups"
@@ -2695,7 +2961,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -2705,7 +2971,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -2715,7 +2981,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -2725,7 +2991,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             }
@@ -2780,7 +3046,7 @@
         ]
       }
     },
-    "/salesteams": {
+    "/v2/salesteams": {
       "get": {
         "tags": [
           "SalesTeams"
@@ -2791,7 +3057,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "array",
               "items": {
@@ -2803,7 +3068,6 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -2813,22 +3077,22 @@
             "name": "orderBy",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "example": [
-              "Key:ASC"
-            ]
+              "type": "string"
+            }
+          },
+          {
+            "name": "OrderDirection",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "pageKey",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -2883,7 +3147,7 @@
         ]
       }
     },
-    "/salesteams/{salesteamKey}": {
+    "/v2/salesteams/{salesteamKey}": {
       "get": {
         "tags": [
           "SalesTeams"
@@ -2894,7 +3158,6 @@
             "name": "salesteamKey",
             "in": "path",
             "required": true,
-            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -2902,7 +3165,6 @@
           {
             "name": "scope",
             "in": "query",
-            "style": "form",
             "schema": {
               "type": "array",
               "items": {
@@ -2960,7 +3222,7 @@
         ]
       }
     },
-    "/salesteams/metadata": {
+    "/v2/salesteams/metadata": {
       "get": {
         "tags": [
           "SalesTeams"
@@ -3019,7 +3281,7 @@
         ]
       }
     },
-    "/salesteams/search": {
+    "/v2/salesteams/search": {
       "post": {
         "tags": [
           "SalesTeams"
@@ -3033,7 +3295,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -3043,7 +3305,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -3053,7 +3315,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -3063,7 +3325,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             }
@@ -3118,7 +3380,7 @@
         ]
       }
     },
-    "/territories": {
+    "/v2/territories": {
       "get": {
         "tags": [
           "Territories"
@@ -3129,7 +3391,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "array",
               "items": {
@@ -3141,7 +3402,6 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -3151,22 +3411,22 @@
             "name": "orderBy",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "example": [
-              "Key:ASC"
-            ]
+              "type": "string"
+            }
+          },
+          {
+            "name": "OrderDirection",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "pageKey",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -3221,7 +3481,7 @@
         ]
       }
     },
-    "/territories/{territoryKey}": {
+    "/v2/territories/{territoryKey}": {
       "get": {
         "tags": [
           "Territories"
@@ -3232,7 +3492,6 @@
             "name": "territoryKey",
             "in": "path",
             "required": true,
-            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -3240,7 +3499,6 @@
           {
             "name": "scope",
             "in": "query",
-            "style": "form",
             "schema": {
               "type": "array",
               "items": {
@@ -3298,7 +3556,7 @@
         ]
       }
     },
-    "/territories/metadata": {
+    "/v2/territories/metadata": {
       "get": {
         "tags": [
           "Territories"
@@ -3357,7 +3615,7 @@
         ]
       }
     },
-    "/territories/search": {
+    "/v2/territories/search": {
       "post": {
         "tags": [
           "Territories"
@@ -3371,7 +3629,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -3381,7 +3639,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -3391,7 +3649,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -3401,7 +3659,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             }
@@ -3456,7 +3714,7 @@
         ]
       }
     },
-    "/users": {
+    "/v2/users": {
       "get": {
         "tags": [
           "Users"
@@ -3467,7 +3725,6 @@
             "name": "scope",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "array",
               "items": {
@@ -3479,7 +3736,6 @@
             "name": "pageSize",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "integer",
               "format": "int32"
@@ -3489,22 +3745,22 @@
             "name": "orderBy",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              }
-            },
-            "example": [
-              "Key:ASC"
-            ]
+              "type": "string"
+            }
+          },
+          {
+            "name": "OrderDirection",
+            "in": "query",
+            "description": "",
+            "schema": {
+              "type": "string"
+            }
           },
           {
             "name": "pageKey",
             "in": "query",
             "description": "",
-            "style": "form",
             "schema": {
               "type": "string"
             }
@@ -3559,7 +3815,7 @@
         ]
       }
     },
-    "/users/{userKey}": {
+    "/v2/users/{userKey}": {
       "get": {
         "tags": [
           "Users"
@@ -3570,7 +3826,6 @@
             "name": "userKey",
             "in": "path",
             "required": true,
-            "style": "simple",
             "schema": {
               "type": "string"
             }
@@ -3578,7 +3833,6 @@
           {
             "name": "scope",
             "in": "query",
-            "style": "form",
             "schema": {
               "type": "array",
               "items": {
@@ -3636,7 +3890,7 @@
         ]
       }
     },
-    "/users/metadata": {
+    "/v2/users/metadata": {
       "get": {
         "tags": [
           "Users"
@@ -3695,7 +3949,7 @@
         ]
       }
     },
-    "/users/search": {
+    "/v2/users/search": {
       "post": {
         "tags": [
           "Users"
@@ -3709,7 +3963,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -3719,7 +3973,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -3729,7 +3983,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             },
@@ -3739,7 +3993,7 @@
               },
               "examples": {
                 "Syntax Example": {
-                  "value": {"pageKey":"","pageSize":10,"scope":["FieldToObtain"],"criteria":{"FieldToSearch":{"$EQ":"ValueToSearch"}},"orderBy":{"FieldToOrderBy":"ASC"},"groupBy":["FieldToGroupBy"]}
+                  "value": {"PageKey":"","PageSize":null,"Scope":["FieldKey"],"Criteria":{"FieldKey":{"Operator":""}},"OrderBy":{"FieldKey":"ASC"},"GroupBy":["FieldKey"]}
                 }
               }
             }
@@ -3797,6 +4051,70 @@
   },
   "components": {
     "schemas": {
+      "AuthenticateRequestModel": {
+        "required": [
+          "appKey",
+          "database",
+          "password",
+          "uid",
+          "vendorId"
+        ],
+        "type": "object",
+        "properties": {
+          "database": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "vendorId": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "appKey": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "uid": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "password": {
+            "minLength": 1,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpandoObjectMultipleResultDataModel": {
+        "type": "object",
+        "properties": {
+          "items": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": { }
+            },
+            "nullable": true
+          },
+          "nextPageKey": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExpandoObjectMultipleResultViewModel": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "$ref": "#/components/schemas/ExpandoObjectMultipleResultDataModel"
+          }
+        },
+        "additionalProperties": false
+      },
       "ProblemDetails": {
         "type": "object",
         "properties": {
@@ -3825,6 +4143,10 @@
         "additionalProperties": { }
       },
       "SearchParametersModel": {
+        "required": [
+          "pageSize",
+          "scope"
+        ],
         "type": "object",
         "properties": {
           "pageKey": {
@@ -3833,19 +4155,19 @@
           },
           "pageSize": {
             "type": "integer",
-            "format": "int32",
-            "nullable": true
+            "format": "int32"
           },
           "scope": {
             "type": "array",
             "items": {
               "type": "string"
-            },
-            "nullable": true
+            }
           },
           "criteria": {
             "type": "object",
-            "additionalProperties": { },
+            "additionalProperties": {
+              "type": "object"
+            },
             "nullable": true
           },
           "orderBy": {
