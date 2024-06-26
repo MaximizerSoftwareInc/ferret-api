@@ -15,4 +15,4 @@ jobs:
 
       - uses: readmeio/rdme@v8
         with:
-          rdme: openapi ./openapi.json --key=${{ secrets.README_API_KEY }} --id=API_DEFINITION_ID --version=v2
+          rdme: openapi ./openapi.json --key=${{ secrets.README_API_KEY }} --id=667c4256c6095b00726e785b --version=v2
