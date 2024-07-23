@@ -11,7 +11,7 @@
     }
   ],
   "paths": {
-    "/core/abentries/fieldOptions": {
+    "/abentries/fieldOptions": {
       "get": {
         "tags": [
           "AbEntries"
@@ -106,7 +106,7 @@
         ]
       }
     },
-    "/core/abentries/{AbEntryKey}": {
+    "/abentries/{AbEntryKey}": {
       "get": {
         "tags": [
           "AbEntries"
@@ -205,7 +205,7 @@
         ]
       }
     },
-    "/core/abentries/metadata": {
+    "/abentries/metadata": {
       "get": {
         "tags": [
           "AbEntries"
@@ -290,7 +290,7 @@
         ]
       }
     },
-    "/core/abentries": {
+    "/abentries": {
       "get": {
         "tags": [
           "AbEntries"
@@ -414,7 +414,7 @@
         ]
       }
     },
-    "/core/abentries/search": {
+    "/abentries/search": {
       "post": {
         "tags": [
           "AbEntries"
@@ -533,7 +533,7 @@
         ]
       }
     },
-    "/core/addresses/{AddressKey}": {
+    "/addresses/{AddressKey}": {
       "get": {
         "tags": [
           "Addresses"
@@ -632,7 +632,7 @@
         ]
       }
     },
-    "/core/addresses/fieldOptions": {
+    "/addresses/fieldOptions": {
       "get": {
         "tags": [
           "Addresses"
@@ -727,7 +727,7 @@
         ]
       }
     },
-    "/core/addresses/metadata": {
+    "/addresses/metadata": {
       "get": {
         "tags": [
           "Addresses"
@@ -812,7 +812,7 @@
         ]
       }
     },
-    "/core/addresses": {
+    "/addresses": {
       "get": {
         "tags": [
           "Addresses"
@@ -936,7 +936,7 @@
         ]
       }
     },
-    "/core/addresses/search": {
+    "/addresses/search": {
       "post": {
         "tags": [
           "Addresses"
@@ -1142,7 +1142,7 @@
         }
       }
     },
-    "/core/campaigns/{CampaignKey}": {
+    "/campaigns/{CampaignKey}": {
       "get": {
         "tags": [
           "Campaigns"
@@ -1241,7 +1241,7 @@
         ]
       }
     },
-    "/core/campaigns/metadata": {
+    "/campaigns/metadata": {
       "get": {
         "tags": [
           "Campaigns"
@@ -1326,7 +1326,7 @@
         ]
       }
     },
-    "/core/campaigns/fieldOptions": {
+    "/campaigns/fieldOptions": {
       "get": {
         "tags": [
           "Campaigns"
@@ -1421,7 +1421,7 @@
         ]
       }
     },
-    "/core/campaigns": {
+    "/campaigns": {
       "get": {
         "tags": [
           "Campaigns"
@@ -1545,7 +1545,7 @@
         ]
       }
     },
-    "/core/campaigns/search": {
+    "/campaigns/search": {
       "post": {
         "tags": [
           "Campaigns"
@@ -1664,7 +1664,7 @@
         ]
       }
     },
-    "/core/cases/{CaseKey}": {
+    "/cases/{CaseKey}": {
       "get": {
         "tags": [
           "Cases"
@@ -1763,7 +1763,7 @@
         ]
       }
     },
-    "/core/cases/metadata": {
+    "/cases/metadata": {
       "get": {
         "tags": [
           "Cases"
@@ -1848,7 +1848,7 @@
         ]
       }
     },
-    "/core/cases/fieldOptions": {
+    "/cases/fieldOptions": {
       "get": {
         "tags": [
           "Cases"
@@ -1943,7 +1943,7 @@
         ]
       }
     },
-    "/core/cases": {
+    "/cases": {
       "get": {
         "tags": [
           "Cases"
@@ -2067,7 +2067,7 @@
         ]
       }
     },
-    "/core/cases/search": {
+    "/cases/search": {
       "post": {
         "tags": [
           "Cases"
@@ -2186,7 +2186,7 @@
         ]
       }
     },
-    "/core/currencyrates/{CurrencyRateKey}": {
+    "/currencyrates/{CurrencyRateKey}": {
       "get": {
         "tags": [
           "CurrencyRates"
@@ -2285,7 +2285,7 @@
         ]
       }
     },
-    "/core/currencyrates/metadata": {
+    "/currencyrates/metadata": {
       "get": {
         "tags": [
           "CurrencyRates"
@@ -2370,7 +2370,7 @@
         ]
       }
     },
-    "/core/currencyrates/fieldOptions": {
+    "/currencyrates/fieldOptions": {
       "get": {
         "tags": [
           "CurrencyRates"
@@ -2465,7 +2465,7 @@
         ]
       }
     },
-    "/core/currencyrates": {
+    "/currencyrates": {
       "get": {
         "tags": [
           "CurrencyRates"
@@ -2589,7 +2589,7 @@
         ]
       }
     },
-    "/core/currencyrates/search": {
+    "/currencyrates/search": {
       "post": {
         "tags": [
           "CurrencyRates"
@@ -2708,7 +2708,7 @@
         ]
       }
     },
-    "/core/interactionlogs/{InteractionLogKey}": {
+    "/interactionlogs/{InteractionLogKey}": {
       "get": {
         "tags": [
           "InteractionLogs"
@@ -2807,7 +2807,7 @@
         ]
       }
     },
-    "/core/interactionlogs/metadata": {
+    "/interactionlogs/metadata": {
       "get": {
         "tags": [
           "InteractionLogs"
@@ -2892,7 +2892,7 @@
         ]
       }
     },
-    "/core/interactionlogs/fieldOptions": {
+    "/interactionlogs/fieldOptions": {
       "get": {
         "tags": [
           "InteractionLogs"
@@ -2987,7 +2987,7 @@
         ]
       }
     },
-    "/core/interactionlogs": {
+    "/interactionlogs": {
       "get": {
         "tags": [
           "InteractionLogs"
@@ -3111,7 +3111,7 @@
         ]
       }
     },
-    "/core/interactionlogs/search": {
+    "/interactionlogs/search": {
       "post": {
         "tags": [
           "InteractionLogs"
@@ -3230,7 +3230,7 @@
         ]
       }
     },
-    "/core/leads/{LeadKey}": {
+    "/leads/{LeadKey}": {
       "get": {
         "tags": [
           "Leads"
@@ -3329,7 +3329,7 @@
         ]
       }
     },
-    "/core/leads/metadata": {
+    "/leads/metadata": {
       "get": {
         "tags": [
           "Leads"
@@ -3414,7 +3414,7 @@
         ]
       }
     },
-    "/core/leads/fieldOptions": {
+    "/leads/fieldOptions": {
       "get": {
         "tags": [
           "Leads"
@@ -3509,7 +3509,7 @@
         ]
       }
     },
-    "/core/leads": {
+    "/leads": {
       "get": {
         "tags": [
           "Leads"
@@ -3633,7 +3633,7 @@
         ]
       }
     },
-    "/core/leads/search": {
+    "/leads/search": {
       "post": {
         "tags": [
           "Leads"
@@ -3752,7 +3752,7 @@
         ]
       }
     },
-    "/core/opportunities/{OpportunityKey}/follow": {
+    "/opportunities/{OpportunityKey}/follow": {
       "post": {
         "tags": [
           "Opportunities"
@@ -3830,7 +3830,7 @@
         ]
       }
     },
-    "/core/opportunities": {
+    "/opportunities": {
       "get": {
         "tags": [
           "Opportunities"
@@ -3954,7 +3954,7 @@
         ]
       }
     },
-    "/core/opportunities/fieldOptions": {
+    "/opportunities/fieldOptions": {
       "get": {
         "tags": [
           "Opportunities"
@@ -4049,7 +4049,7 @@
         ]
       }
     },
-    "/core/opportunities/{OpportunityKey}": {
+    "/opportunities/{OpportunityKey}": {
       "get": {
         "tags": [
           "Opportunities"
@@ -4149,7 +4149,7 @@
         ]
       }
     },
-    "/core/opportunities/metadata": {
+    "/opportunities/metadata": {
       "get": {
         "tags": [
           "Opportunities"
@@ -4234,7 +4234,7 @@
         ]
       }
     },
-    "/core/opportunities/search": {
+    "/opportunities/search": {
       "post": {
         "tags": [
           "Opportunities"
@@ -4353,7 +4353,7 @@
         ]
       }
     },
-    "/core/processsetups": {
+    "/processsetups": {
       "get": {
         "tags": [
           "ProcessSetups"
@@ -4477,7 +4477,7 @@
         ]
       }
     },
-    "/core/processsetups/{ProcessSetupKey}": {
+    "/processsetups/{ProcessSetupKey}": {
       "get": {
         "tags": [
           "ProcessSetups"
@@ -4576,7 +4576,7 @@
         ]
       }
     },
-    "/core/processsetups/metadata": {
+    "/processsetups/metadata": {
       "get": {
         "tags": [
           "ProcessSetups"
@@ -4661,7 +4661,7 @@
         ]
       }
     },
-    "/core/processsetups/fieldOptions": {
+    "/processsetups/fieldOptions": {
       "get": {
         "tags": [
           "ProcessSetups"
@@ -4756,7 +4756,7 @@
         ]
       }
     },
-    "/core/processsetups/search": {
+    "/processsetups/search": {
       "post": {
         "tags": [
           "ProcessSetups"
@@ -4875,7 +4875,7 @@
         ]
       }
     },
-    "/core/processstagesetups": {
+    "/processstagesetups": {
       "get": {
         "tags": [
           "ProcessStageSetups"
@@ -4999,7 +4999,7 @@
         ]
       }
     },
-    "/core/processstagesetups/{ProcessStageSetupKey}": {
+    "/processstagesetups/{ProcessStageSetupKey}": {
       "get": {
         "tags": [
           "ProcessStageSetups"
@@ -5098,7 +5098,7 @@
         ]
       }
     },
-    "/core/processstagesetups/metadata": {
+    "/processstagesetups/metadata": {
       "get": {
         "tags": [
           "ProcessStageSetups"
@@ -5183,7 +5183,7 @@
         ]
       }
     },
-    "/core/processstagesetups/fieldOptions": {
+    "/processstagesetups/fieldOptions": {
       "get": {
         "tags": [
           "ProcessStageSetups"
@@ -5278,7 +5278,7 @@
         ]
       }
     },
-    "/core/processstagesetups/search": {
+    "/processstagesetups/search": {
       "post": {
         "tags": [
           "ProcessStageSetups"
@@ -5397,7 +5397,7 @@
         ]
       }
     },
-    "/core/salesprocesssetups": {
+    "/salesprocesssetups": {
       "get": {
         "tags": [
           "SalesProcessSetups"
@@ -5521,7 +5521,7 @@
         ]
       }
     },
-    "/core/salesprocesssetups/{SalesProcessSetupKey}": {
+    "/salesprocesssetups/{SalesProcessSetupKey}": {
       "get": {
         "tags": [
           "SalesProcessSetups"
@@ -5620,7 +5620,7 @@
         ]
       }
     },
-    "/core/salesprocesssetups/metadata": {
+    "/salesprocesssetups/metadata": {
       "get": {
         "tags": [
           "SalesProcessSetups"
@@ -5705,7 +5705,7 @@
         ]
       }
     },
-    "/core/salesprocesssetups/fieldOptions": {
+    "/salesprocesssetups/fieldOptions": {
       "get": {
         "tags": [
           "SalesProcessSetups"
@@ -5800,7 +5800,7 @@
         ]
       }
     },
-    "/core/salesprocesssetups/search": {
+    "/salesprocesssetups/search": {
       "post": {
         "tags": [
           "SalesProcessSetups"
@@ -5919,7 +5919,7 @@
         ]
       }
     },
-    "/core/salesstagesetups": {
+    "/salesstagesetups": {
       "get": {
         "tags": [
           "SalesStageSetups"
@@ -6043,7 +6043,7 @@
         ]
       }
     },
-    "/core/salesstagesetups/{SalesStageSetupKey}": {
+    "/salesstagesetups/{SalesStageSetupKey}": {
       "get": {
         "tags": [
           "SalesStageSetups"
@@ -6142,7 +6142,7 @@
         ]
       }
     },
-    "/core/salesstagesetups/metadata": {
+    "/salesstagesetups/metadata": {
       "get": {
         "tags": [
           "SalesStageSetups"
@@ -6227,7 +6227,7 @@
         ]
       }
     },
-    "/core/salesstagesetups/fieldOptions": {
+    "/salesstagesetups/fieldOptions": {
       "get": {
         "tags": [
           "SalesStageSetups"
@@ -6322,7 +6322,7 @@
         ]
       }
     },
-    "/core/salesstagesetups/search": {
+    "/salesstagesetups/search": {
       "post": {
         "tags": [
           "SalesStageSetups"
@@ -6441,7 +6441,7 @@
         ]
       }
     },
-    "/core/salesteams": {
+    "/salesteams": {
       "get": {
         "tags": [
           "SalesTeams"
@@ -6565,7 +6565,7 @@
         ]
       }
     },
-    "/core/salesteams/{SalesTeamKey}": {
+    "/salesteams/{SalesTeamKey}": {
       "get": {
         "tags": [
           "SalesTeams"
@@ -6664,7 +6664,7 @@
         ]
       }
     },
-    "/core/salesteams/metadata": {
+    "/salesteams/metadata": {
       "get": {
         "tags": [
           "SalesTeams"
@@ -6749,7 +6749,7 @@
         ]
       }
     },
-    "/core/salesteams/fieldOptions": {
+    "/salesteams/fieldOptions": {
       "get": {
         "tags": [
           "SalesTeams"
@@ -6844,7 +6844,7 @@
         ]
       }
     },
-    "/core/salesteams/search": {
+    "/salesteams/search": {
       "post": {
         "tags": [
           "SalesTeams"
@@ -6963,7 +6963,7 @@
         ]
       }
     },
-    "/core/secgroups": {
+    "/secgroups": {
       "get": {
         "tags": [
           "SecGroups"
@@ -7087,7 +7087,7 @@
         ]
       }
     },
-    "/core/secgroups/{SecGroupKey}": {
+    "/secgroups/{SecGroupKey}": {
       "get": {
         "tags": [
           "SecGroups"
@@ -7186,7 +7186,7 @@
         ]
       }
     },
-    "/core/secgroups/metadata": {
+    "/secgroups/metadata": {
       "get": {
         "tags": [
           "SecGroups"
@@ -7271,7 +7271,7 @@
         ]
       }
     },
-    "/core/secgroups/fieldOptions": {
+    "/secgroups/fieldOptions": {
       "get": {
         "tags": [
           "SecGroups"
@@ -7366,7 +7366,7 @@
         ]
       }
     },
-    "/core/secgroups/search": {
+    "/secgroups/search": {
       "post": {
         "tags": [
           "SecGroups"
@@ -7485,7 +7485,7 @@
         ]
       }
     },
-    "/core/territories": {
+    "/territories": {
       "get": {
         "tags": [
           "Territories"
@@ -7609,7 +7609,7 @@
         ]
       }
     },
-    "/core/territories/fieldOptions": {
+    "/territories/fieldOptions": {
       "get": {
         "tags": [
           "Territories"
@@ -7704,7 +7704,7 @@
         ]
       }
     },
-    "/core/territories/{TerritoryKey}": {
+    "/territories/{TerritoryKey}": {
       "get": {
         "tags": [
           "Territories"
@@ -7803,7 +7803,7 @@
         ]
       }
     },
-    "/core/territories/metadata": {
+    "/territories/metadata": {
       "get": {
         "tags": [
           "Territories"
@@ -7888,7 +7888,7 @@
         ]
       }
     },
-    "/core/territories/search": {
+    "/territories/search": {
       "post": {
         "tags": [
           "Territories"
@@ -8007,7 +8007,7 @@
         ]
       }
     },
-    "/core/users": {
+    "/users": {
       "get": {
         "tags": [
           "Users"
@@ -8131,7 +8131,7 @@
         ]
       }
     },
-    "/core/users/{UserKey}": {
+    "/users/{UserKey}": {
       "get": {
         "tags": [
           "Users"
@@ -8230,7 +8230,7 @@
         ]
       }
     },
-    "/core/users/metadata": {
+    "/users/metadata": {
       "get": {
         "tags": [
           "Users"
@@ -8315,7 +8315,7 @@
         ]
       }
     },
-    "/core/users/fieldOptions": {
+    "/users/fieldOptions": {
       "get": {
         "tags": [
           "Users"
@@ -8410,7 +8410,7 @@
         ]
       }
     },
-    "/core/users/search": {
+    "/users/search": {
       "post": {
         "tags": [
           "Users"
