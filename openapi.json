@@ -16,7 +16,7 @@
         "tags": [
           "AbEntries"
         ],
-        "summary": "Get field options for abentry",
+        "summary": "Get field options for AbEntry",
         "parameters": [
           {
             "name": "Field",
@@ -111,11 +111,12 @@
         "tags": [
           "AbEntries"
         ],
-        "summary": "Get a single abentry by key",
+        "summary": "Get a single AbEntry by key",
         "parameters": [
           {
             "name": "AbEntryKey",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string"
@@ -210,7 +211,7 @@
         "tags": [
           "AbEntries"
         ],
-        "summary": "Get metadata for abentry",
+        "summary": "Get metadata for AbEntry",
         "parameters": [
           {
             "name": "ExpandFields",
@@ -295,7 +296,7 @@
         "tags": [
           "AbEntries"
         ],
-        "summary": "Get list of abentries",
+        "summary": "Get list of AbEntries",
         "parameters": [
           {
             "name": "Scope",
@@ -419,7 +420,7 @@
         "tags": [
           "AbEntries"
         ],
-        "summary": "Search for abentries",
+        "summary": "Search for AbEntries",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -538,11 +539,12 @@
         "tags": [
           "Addresses"
         ],
-        "summary": "Get a single address by key",
+        "summary": "Get a single Address by key",
         "parameters": [
           {
             "name": "AddressKey",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string"
@@ -637,7 +639,7 @@
         "tags": [
           "Addresses"
         ],
-        "summary": "Get field options for address",
+        "summary": "Get field options for Address",
         "parameters": [
           {
             "name": "Field",
@@ -732,7 +734,7 @@
         "tags": [
           "Addresses"
         ],
-        "summary": "Get metadata for address",
+        "summary": "Get metadata for Address",
         "parameters": [
           {
             "name": "ExpandFields",
@@ -817,7 +819,7 @@
         "tags": [
           "Addresses"
         ],
-        "summary": "Get list of addresses",
+        "summary": "Get list of Addresses",
         "parameters": [
           {
             "name": "Scope",
@@ -941,7 +943,7 @@
         "tags": [
           "Addresses"
         ],
-        "summary": "Search for addresses",
+        "summary": "Search for Addresses",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -1142,16 +1144,102 @@
         }
       }
     },
+    "/billing/link": {
+      "get": {
+        "tags": [
+          "Billing"
+        ],
+        "summary": "Get the billing link",
+        "responses": {
+          "200": {
+            "description": "Success",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BillingLinkResponseDtoSingleResultViewModel"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Forbidden",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "408": {
+            "description": "Request Timeout",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "429": {
+            "description": "Too Many Requests",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "Bearer": [ ]
+          }
+        ]
+      }
+    },
     "/campaigns/{CampaignKey}": {
       "get": {
         "tags": [
           "Campaigns"
         ],
-        "summary": "Get a single campaign by key",
+        "summary": "Get a single Campaign by key",
         "parameters": [
           {
             "name": "CampaignKey",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string"
@@ -1246,7 +1334,7 @@
         "tags": [
           "Campaigns"
         ],
-        "summary": "Get metadata for campaign",
+        "summary": "Get metadata for Campaign",
         "parameters": [
           {
             "name": "ExpandFields",
@@ -1331,7 +1419,7 @@
         "tags": [
           "Campaigns"
         ],
-        "summary": "Get field options for campaign",
+        "summary": "Get field options for Campaign",
         "parameters": [
           {
             "name": "Field",
@@ -1426,7 +1514,7 @@
         "tags": [
           "Campaigns"
         ],
-        "summary": "Get list of campaigns",
+        "summary": "Get list of Campaigns",
         "parameters": [
           {
             "name": "Scope",
@@ -1550,7 +1638,7 @@
         "tags": [
           "Campaigns"
         ],
-        "summary": "Search for campaigns",
+        "summary": "Search for Campaigns",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -1669,11 +1757,12 @@
         "tags": [
           "Cases"
         ],
-        "summary": "Get a single case by key",
+        "summary": "Get a single Case by key",
         "parameters": [
           {
             "name": "CaseKey",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string"
@@ -1768,7 +1857,7 @@
         "tags": [
           "Cases"
         ],
-        "summary": "Get metadata for case",
+        "summary": "Get metadata for Case",
         "parameters": [
           {
             "name": "ExpandFields",
@@ -1853,7 +1942,7 @@
         "tags": [
           "Cases"
         ],
-        "summary": "Get field options for case",
+        "summary": "Get field options for Case",
         "parameters": [
           {
             "name": "Field",
@@ -1948,7 +2037,7 @@
         "tags": [
           "Cases"
         ],
-        "summary": "Get list of cases",
+        "summary": "Get list of Cases",
         "parameters": [
           {
             "name": "Scope",
@@ -2072,7 +2161,7 @@
         "tags": [
           "Cases"
         ],
-        "summary": "Search for cases",
+        "summary": "Search for Cases",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -2191,11 +2280,12 @@
         "tags": [
           "CurrencyRates"
         ],
-        "summary": "Get a single currencyrate by key",
+        "summary": "Get a single CurrencyRate by key",
         "parameters": [
           {
             "name": "CurrencyRateKey",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string"
@@ -2290,7 +2380,7 @@
         "tags": [
           "CurrencyRates"
         ],
-        "summary": "Get metadata for currencyrate",
+        "summary": "Get metadata for CurrencyRate",
         "parameters": [
           {
             "name": "ExpandFields",
@@ -2375,7 +2465,7 @@
         "tags": [
           "CurrencyRates"
         ],
-        "summary": "Get field options for currencyrate",
+        "summary": "Get field options for CurrencyRate",
         "parameters": [
           {
             "name": "Field",
@@ -2470,7 +2560,7 @@
         "tags": [
           "CurrencyRates"
         ],
-        "summary": "Get list of currencyrates",
+        "summary": "Get list of CurrencyRates",
         "parameters": [
           {
             "name": "Scope",
@@ -2594,7 +2684,7 @@
         "tags": [
           "CurrencyRates"
         ],
-        "summary": "Search for currencyrates",
+        "summary": "Search for CurrencyRates",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -2713,11 +2803,12 @@
         "tags": [
           "InteractionLogs"
         ],
-        "summary": "Get a single interactionlog by key",
+        "summary": "Get a single InteractionLog by key",
         "parameters": [
           {
             "name": "InteractionLogKey",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string"
@@ -2812,7 +2903,7 @@
         "tags": [
           "InteractionLogs"
         ],
-        "summary": "Get metadata for interactionlog",
+        "summary": "Get metadata for InteractionLog",
         "parameters": [
           {
             "name": "ExpandFields",
@@ -2897,7 +2988,7 @@
         "tags": [
           "InteractionLogs"
         ],
-        "summary": "Get field options for interactionlog",
+        "summary": "Get field options for InteractionLog",
         "parameters": [
           {
             "name": "Field",
@@ -2992,7 +3083,7 @@
         "tags": [
           "InteractionLogs"
         ],
-        "summary": "Get list of interactionlogs",
+        "summary": "Get list of InteractionLogs",
         "parameters": [
           {
             "name": "Scope",
@@ -3116,7 +3207,7 @@
         "tags": [
           "InteractionLogs"
         ],
-        "summary": "Search for interactionlogs",
+        "summary": "Search for InteractionLogs",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -3235,11 +3326,12 @@
         "tags": [
           "Leads"
         ],
-        "summary": "Get a single lead by key",
+        "summary": "Get a single Lead by key",
         "parameters": [
           {
             "name": "LeadKey",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string"
@@ -3334,7 +3426,7 @@
         "tags": [
           "Leads"
         ],
-        "summary": "Get metadata for lead",
+        "summary": "Get metadata for Lead",
         "parameters": [
           {
             "name": "ExpandFields",
@@ -3419,7 +3511,7 @@
         "tags": [
           "Leads"
         ],
-        "summary": "Get field options for lead",
+        "summary": "Get field options for Lead",
         "parameters": [
           {
             "name": "Field",
@@ -3514,7 +3606,7 @@
         "tags": [
           "Leads"
         ],
-        "summary": "Get list of leads",
+        "summary": "Get list of Leads",
         "parameters": [
           {
             "name": "Scope",
@@ -3638,7 +3730,7 @@
         "tags": [
           "Leads"
         ],
-        "summary": "Search for leads",
+        "summary": "Search for Leads",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -3835,7 +3927,7 @@
         "tags": [
           "Opportunities"
         ],
-        "summary": "Get list of opportunities",
+        "summary": "Get list of Opportunities",
         "parameters": [
           {
             "name": "Scope",
@@ -3959,7 +4051,7 @@
         "tags": [
           "Opportunities"
         ],
-        "summary": "Get field options for opportunity",
+        "summary": "Get field options for Opportunity",
         "parameters": [
           {
             "name": "Field",
@@ -4054,7 +4146,7 @@
         "tags": [
           "Opportunities"
         ],
-        "summary": "Get a single opportunity by key",
+        "summary": "Get a single Opportunity by key",
         "parameters": [
           {
             "name": "OpportunityKey",
@@ -4154,7 +4246,7 @@
         "tags": [
           "Opportunities"
         ],
-        "summary": "Get metadata for opportunity",
+        "summary": "Get metadata for Opportunity",
         "parameters": [
           {
             "name": "ExpandFields",
@@ -4239,7 +4331,7 @@
         "tags": [
           "Opportunities"
         ],
-        "summary": "Search for opportunities",
+        "summary": "Search for Opportunities",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -4358,7 +4450,7 @@
         "tags": [
           "ProcessSetups"
         ],
-        "summary": "Get list of processsetups",
+        "summary": "Get list of ProcessSetups",
         "parameters": [
           {
             "name": "Scope",
@@ -4482,11 +4574,12 @@
         "tags": [
           "ProcessSetups"
         ],
-        "summary": "Get a single processsetup by key",
+        "summary": "Get a single ProcessSetup by key",
         "parameters": [
           {
             "name": "ProcessSetupKey",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string"
@@ -4581,7 +4674,7 @@
         "tags": [
           "ProcessSetups"
         ],
-        "summary": "Get metadata for processsetup",
+        "summary": "Get metadata for ProcessSetup",
         "parameters": [
           {
             "name": "ExpandFields",
@@ -4666,7 +4759,7 @@
         "tags": [
           "ProcessSetups"
         ],
-        "summary": "Get field options for processsetup",
+        "summary": "Get field options for ProcessSetup",
         "parameters": [
           {
             "name": "Field",
@@ -4761,7 +4854,7 @@
         "tags": [
           "ProcessSetups"
         ],
-        "summary": "Search for processsetups",
+        "summary": "Search for ProcessSetups",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -4880,7 +4973,7 @@
         "tags": [
           "ProcessStageSetups"
         ],
-        "summary": "Get list of processstagesetups",
+        "summary": "Get list of ProcessStageSetups",
         "parameters": [
           {
             "name": "Scope",
@@ -5004,11 +5097,12 @@
         "tags": [
           "ProcessStageSetups"
         ],
-        "summary": "Get a single processstagesetup by key",
+        "summary": "Get a single ProcessStageSetup by key",
         "parameters": [
           {
             "name": "ProcessStageSetupKey",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string"
@@ -5103,7 +5197,7 @@
         "tags": [
           "ProcessStageSetups"
         ],
-        "summary": "Get metadata for processstagesetup",
+        "summary": "Get metadata for ProcessStageSetup",
         "parameters": [
           {
             "name": "ExpandFields",
@@ -5188,7 +5282,7 @@
         "tags": [
           "ProcessStageSetups"
         ],
-        "summary": "Get field options for processstagesetup",
+        "summary": "Get field options for ProcessStageSetup",
         "parameters": [
           {
             "name": "Field",
@@ -5283,7 +5377,7 @@
         "tags": [
           "ProcessStageSetups"
         ],
-        "summary": "Search for processstagesetups",
+        "summary": "Search for ProcessStageSetups",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -5402,7 +5496,7 @@
         "tags": [
           "SalesProcessSetups"
         ],
-        "summary": "Get list of salesprocesssetups",
+        "summary": "Get list of SalesProcessSetups",
         "parameters": [
           {
             "name": "Scope",
@@ -5526,11 +5620,12 @@
         "tags": [
           "SalesProcessSetups"
         ],
-        "summary": "Get a single salesprocesssetup by key",
+        "summary": "Get a single SalesProcessSetup by key",
         "parameters": [
           {
             "name": "SalesProcessSetupKey",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string"
@@ -5625,7 +5720,7 @@
         "tags": [
           "SalesProcessSetups"
         ],
-        "summary": "Get metadata for salesprocesssetup",
+        "summary": "Get metadata for SalesProcessSetup",
         "parameters": [
           {
             "name": "ExpandFields",
@@ -5710,7 +5805,7 @@
         "tags": [
           "SalesProcessSetups"
         ],
-        "summary": "Get field options for salesprocesssetup",
+        "summary": "Get field options for SalesProcessSetup",
         "parameters": [
           {
             "name": "Field",
@@ -5805,7 +5900,7 @@
         "tags": [
           "SalesProcessSetups"
         ],
-        "summary": "Search for salesprocesssetups",
+        "summary": "Search for SalesProcessSetups",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -5924,7 +6019,7 @@
         "tags": [
           "SalesStageSetups"
         ],
-        "summary": "Get list of salesstagesetups",
+        "summary": "Get list of SalesStageSetups",
         "parameters": [
           {
             "name": "Scope",
@@ -6048,11 +6143,12 @@
         "tags": [
           "SalesStageSetups"
         ],
-        "summary": "Get a single salesstagesetup by key",
+        "summary": "Get a single SalesStageSetup by key",
         "parameters": [
           {
             "name": "SalesStageSetupKey",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string"
@@ -6147,7 +6243,7 @@
         "tags": [
           "SalesStageSetups"
         ],
-        "summary": "Get metadata for salesstagesetup",
+        "summary": "Get metadata for SalesStageSetup",
         "parameters": [
           {
             "name": "ExpandFields",
@@ -6232,7 +6328,7 @@
         "tags": [
           "SalesStageSetups"
         ],
-        "summary": "Get field options for salesstagesetup",
+        "summary": "Get field options for SalesStageSetup",
         "parameters": [
           {
             "name": "Field",
@@ -6327,7 +6423,7 @@
         "tags": [
           "SalesStageSetups"
         ],
-        "summary": "Search for salesstagesetups",
+        "summary": "Search for SalesStageSetups",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -6446,7 +6542,7 @@
         "tags": [
           "SalesTeams"
         ],
-        "summary": "Get list of salesteams",
+        "summary": "Get list of SalesTeams",
         "parameters": [
           {
             "name": "Scope",
@@ -6570,11 +6666,12 @@
         "tags": [
           "SalesTeams"
         ],
-        "summary": "Get a single salesteam by key",
+        "summary": "Get a single SalesTeam by key",
         "parameters": [
           {
             "name": "SalesTeamKey",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string"
@@ -6669,7 +6766,7 @@
         "tags": [
           "SalesTeams"
         ],
-        "summary": "Get metadata for salesteam",
+        "summary": "Get metadata for SalesTeam",
         "parameters": [
           {
             "name": "ExpandFields",
@@ -6754,7 +6851,7 @@
         "tags": [
           "SalesTeams"
         ],
-        "summary": "Get field options for salesteam",
+        "summary": "Get field options for SalesTeam",
         "parameters": [
           {
             "name": "Field",
@@ -6849,7 +6946,7 @@
         "tags": [
           "SalesTeams"
         ],
-        "summary": "Search for salesteams",
+        "summary": "Search for SalesTeams",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -6968,7 +7065,7 @@
         "tags": [
           "SecGroups"
         ],
-        "summary": "Get list of secgroups",
+        "summary": "Get list of SecGroups",
         "parameters": [
           {
             "name": "Scope",
@@ -7092,11 +7189,12 @@
         "tags": [
           "SecGroups"
         ],
-        "summary": "Get a single secgroup by key",
+        "summary": "Get a single SecGroup by key",
         "parameters": [
           {
             "name": "SecGroupKey",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string"
@@ -7191,7 +7289,7 @@
         "tags": [
           "SecGroups"
         ],
-        "summary": "Get metadata for secgroup",
+        "summary": "Get metadata for SecGroup",
         "parameters": [
           {
             "name": "ExpandFields",
@@ -7276,7 +7374,7 @@
         "tags": [
           "SecGroups"
         ],
-        "summary": "Get field options for secgroup",
+        "summary": "Get field options for SecGroup",
         "parameters": [
           {
             "name": "Field",
@@ -7371,7 +7469,7 @@
         "tags": [
           "SecGroups"
         ],
-        "summary": "Search for secgroups",
+        "summary": "Search for SecGroups",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -7490,7 +7588,7 @@
         "tags": [
           "Territories"
         ],
-        "summary": "Get list of territories",
+        "summary": "Get list of Territories",
         "parameters": [
           {
             "name": "Scope",
@@ -7614,7 +7712,7 @@
         "tags": [
           "Territories"
         ],
-        "summary": "Get field options for territory",
+        "summary": "Get field options for Territory",
         "parameters": [
           {
             "name": "Field",
@@ -7709,11 +7807,12 @@
         "tags": [
           "Territories"
         ],
-        "summary": "Get a single territory by key",
+        "summary": "Get a single Territory by key",
         "parameters": [
           {
             "name": "TerritoryKey",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string"
@@ -7808,7 +7907,7 @@
         "tags": [
           "Territories"
         ],
-        "summary": "Get metadata for territory",
+        "summary": "Get metadata for Territory",
         "parameters": [
           {
             "name": "ExpandFields",
@@ -7893,7 +7992,7 @@
         "tags": [
           "Territories"
         ],
-        "summary": "Search for territories",
+        "summary": "Search for Territories",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -8012,7 +8111,7 @@
         "tags": [
           "Users"
         ],
-        "summary": "Get list of users",
+        "summary": "Get list of Users",
         "parameters": [
           {
             "name": "Scope",
@@ -8136,11 +8235,12 @@
         "tags": [
           "Users"
         ],
-        "summary": "Get a single user by key",
+        "summary": "Get a single User by key",
         "parameters": [
           {
             "name": "UserKey",
             "in": "path",
+            "description": "",
             "required": true,
             "schema": {
               "type": "string"
@@ -8235,7 +8335,7 @@
         "tags": [
           "Users"
         ],
-        "summary": "Get metadata for user",
+        "summary": "Get metadata for User",
         "parameters": [
           {
             "name": "ExpandFields",
@@ -8320,7 +8420,7 @@
         "tags": [
           "Users"
         ],
-        "summary": "Get field options for user",
+        "summary": "Get field options for User",
         "parameters": [
           {
             "name": "Field",
@@ -8415,7 +8515,7 @@
         "tags": [
           "Users"
         ],
-        "summary": "Search for users",
+        "summary": "Search for Users",
         "requestBody": {
           "content": {
             "application/json-patch+json": {
@@ -8561,6 +8661,39 @@
           "Password": {
             "minLength": 1,
             "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BillingLinkResponseDto": {
+        "type": "object",
+        "properties": {
+          "Url": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "BillingLinkResponseDtoSingleResultDataModel": {
+        "type": "object",
+        "properties": {
+          "Item": {
+            "$ref": "#/components/schemas/BillingLinkResponseDto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "BillingLinkResponseDtoSingleResultViewModel": {
+        "type": "object",
+        "properties": {
+          "Message": {
+            "type": "string",
+            "nullable": true
+          },
+          "Data": {
+            "$ref": "#/components/schemas/BillingLinkResponseDtoSingleResultDataModel"
           }
         },
         "additionalProperties": false
